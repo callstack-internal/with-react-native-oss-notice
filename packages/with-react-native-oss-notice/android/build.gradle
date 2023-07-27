@@ -63,4 +63,10 @@ dependencies {
     } else {
         implementation 'com.facebook.react:react-native:+' // From node_modules
     }
+
+    def aboutLibrariesPluginVersion = "10.8.3"
+    implementation("com.mikepenz:aboutlibraries-core-android:$aboutLibrariesPluginVersion")
+    implementation("com.mikepenz:aboutlibraries:$aboutLibrariesPluginVersion") {
+        exclude group: 'com.mikepenz', module: 'aboutlibraries-core'
+    }
 }

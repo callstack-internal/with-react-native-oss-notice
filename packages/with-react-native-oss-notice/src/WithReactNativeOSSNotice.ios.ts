@@ -1,10 +1,10 @@
-import { Linking } from 'react-native';
+import NativeWithReactNativeOSSNotice from './NativeWithReactNativeOSSNotice';
 
 export const WithReactNativeOSSNotice = {
-  launchLicenseListScreen: (_licenseHeaderText: string) => {
+  launchLicenseListScreen: (licenseHeaderText?: string) => {
     /**
-     * On iOS, the licenses list is inside dedicated section in the app's settings
+     * On iOS, the licenses list is displayed as a custom table view controller
      */
-    Linking.openSettings();
-  }
+    NativeWithReactNativeOSSNotice.launchLicenseListScreen(licenseHeaderText ?? 'OSS Licenses');
+  },
 };

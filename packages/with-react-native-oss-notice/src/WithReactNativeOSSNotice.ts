@@ -1,5 +1,5 @@
 export const WithReactNativeOSSNotice = {
-  launchLicenseListScreen: (_licenseHeaderText: string) => {
+  launchLicenseListScreen: (_licenseHeaderText?: string) => {
     //
-  }
+  },
 };

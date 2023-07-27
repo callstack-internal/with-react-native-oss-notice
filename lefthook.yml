@@ -1,0 +1,17 @@
+pre-commit:
+  piped: true
+  commands:
+    lint-js:
+      # Run linter for JS/TS files if any of them are staged
+      files: git diff --name-only --cached
+      glob: "*.{js,ts,jsx,tsx}"
+      run: yarn lint:js
+    typescript:
+      # Run type-checking for TS files if any of them are staged
+      files: git diff --name-only --cached
+      glob: "*.{js,ts,jsx,tsx}"
+      run: yarn typescript
+commit-msg:
+  commands:
+    commitlint:
+      run: yarn commitlint --edit

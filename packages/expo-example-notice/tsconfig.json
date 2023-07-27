@@ -1,0 +1,9 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "with-react-native-oss-notice": ["../with-react-native-oss-notice/src/index"]
+    }
+  }
+}

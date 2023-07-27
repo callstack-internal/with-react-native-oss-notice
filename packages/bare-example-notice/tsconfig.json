@@ -1,0 +1,9 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "with-react-native-oss-notice": ["../with-react-native-oss-notice/src/index"]
+    }
+  }
+}

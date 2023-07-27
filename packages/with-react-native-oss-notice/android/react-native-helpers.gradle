@@ -13,14 +13,14 @@ def resolveReactNativeDirectory() {
 
     // monorepo workaround
     // react-native can be hoisted or in project's own node_modules
-    def reactNativeFromProjectNodeModules = file("${rootProject.projectDir}/../node_modules/react-native")
-    if (reactNativeFromProjectNodeModules.exists()) {
-        return reactNativeFromProjectNodeModules
-    }
-
     def reactNativeFromNodeModules = file("${projectDir}/../../react-native")
     if (reactNativeFromNodeModules.exists()) {
         return reactNativeFromNodeModules
+    }
+
+    def reactNativeFromProjectNodeModules = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
+    if (reactNativeFromProjectNodeModules.exists()) {
+        return reactNativeFromProjectNodeModules
     }
 
     throw new GradleException(
@@ -34,6 +34,7 @@ def resolveReactNativeDirectory() {
 def reactNativeRootDir = resolveReactNativeDirectory()
 
 def reactProperties = new Properties()
+print("$reactNativeRootDir")
 file("$reactNativeRootDir/ReactAndroid/gradle.properties").withInputStream { reactProperties.load(it) }
 
 def REACT_NATIVE_VERSION = reactProperties.getProperty("VERSION_NAME")

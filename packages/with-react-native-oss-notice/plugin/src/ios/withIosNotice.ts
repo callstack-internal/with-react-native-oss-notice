@@ -1,13 +1,20 @@
-import type { ConfigPlugin } from 'expo/config-plugins';
+import path from 'path';
 
-import { invokeCommand } from "../utils";
+import { type ConfigPlugin, withXcodeProject } from 'expo/config-plugins';
+
+import { generateLicensePlistNPMOutput, scanDependencies } from '../../../plugin-utils/build/common';
+
 import { addSettingsBundle } from './addSettingsBundle';
 import { registerLicensePlistBuildPhase } from './registerLicensePlistBuildPhase';
 
 export const withIosNotice: ConfigPlugin = (config) => {
-  invokeCommand('npx react-native-oss-license --format settings-bundle --only-direct-dependency --output-path=ios/Settings.bundle');
+  withXcodeProject(config, async (exportedConfig) => {
+    const licenses = scanDependencies(path.join(exportedConfig.modRequest.projectRoot, 'package.json'));
 
+    generateLicensePlistNPMOutput(licenses, exportedConfig.modRequest.platformProjectRoot);
+    return exportedConfig;
+  });
   config = addSettingsBundle(config);
   config = registerLicensePlistBuildPhase(config);
   return config;
-}
+};

@@ -5,6 +5,13 @@
       "packages/*"
     ]
   },
+  "scripts": {
+    "install-git-hooks": "lefthook install",
+    "build-library": "yarn build-plugins && yarn workspace with-react-native-oss-notice build-library",
+    "build-plugins": "tsc -p packages/with-react-native-oss-notice/plugin-utils/tsconfig.json && tsc -p packages/with-react-native-oss-notice/bare-plugin/tsconfig.json && tsc -p packages/with-react-native-oss-notice/plugin/tsconfig.json",
+    "lint:js": "eslint \"**/*.{js,ts,tsx}\"",
+    "typescript": "yarn build-library && tsc --noEmit -p packages/bare-example-notice/tsconfig.json && tsc --noEmit -p packages/bare-example-notice/tsconfig.json"
+  },
   "repository": "https://github.com/mateusz1913/with-react-native-oss-notice",
   "author": "Mateusz Mędrek <luigimario1913@gmail.com> (https://github.com/mateusz1913)",
   "license": "MIT",
@@ -14,6 +21,25 @@
   "homepage": "https://github.com/mateusz1913/with-react-native-oss-notice#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "17.6.6",
+    "@evilmartians/lefthook": "1.4.3",
+    "@typescript-eslint/eslint-plugin": "6.2.0",
+    "@typescript-eslint/parser": "6.2.0",
+    "commitlint": "17.6.6",
+    "eslint": "8.46.0",
+    "eslint-config-react": "1.1.7",
+    "eslint-plugin-import": "2.28.0",
+    "eslint-plugin-react": "7.33.0",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-react-native": "4.0.0",
+    "typescript": "^5.1.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "packageManager": "yarn@3.6.1"
 }

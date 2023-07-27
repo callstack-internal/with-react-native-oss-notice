@@ -13,7 +13,7 @@ class WithReactNativeOSSNoticeModule(
 
     @ReactMethod
     fun launchLicenseListScreen(licenseHeaderText: String) {
-        launchLicenseListScreen(reactApplicationContext, licenseHeaderText)
+        WithReactNativeOSSNoticeModuleImpl.launchLicenseListScreen(reactApplicationContext, licenseHeaderText)
     }
 
     companion object {

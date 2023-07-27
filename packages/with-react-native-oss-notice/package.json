@@ -48,11 +48,21 @@
     "!**/__fixtures__",
     "!**/__mocks__"
   ],
+  "scripts": {
+    "build-library": "bob build",
+    "tsc": "tsc"
+  },
   "devDependencies": {
+    "@types/xml2js": "^0.4.11",
     "expo": "^49.0.0",
     "expo-module-scripts": "^3.0.11",
     "react": "18.2.0",
-    "react-native": "0.72.1"
+    "react-native": "0.72.3",
+    "react-native-builder-bob": "0.21.3"
+  },
+  "dependencies": {
+    "xcode": "^3.0.1",
+    "xml2js": "^0.6.2"
   },
   "peerDependencies": {
     "expo": ">=47.0.0",
@@ -62,6 +72,21 @@
     "expo": {
       "optional": true
     }
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.json",
+          "tsc": "../../node_modules/typescript/bin/tsc"
+        }
+      ]
+    ]
   },
   "codegenConfig": {
     "name": "WithReactNativeOSSNotice",
