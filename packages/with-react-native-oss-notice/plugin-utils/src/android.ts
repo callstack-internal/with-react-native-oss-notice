@@ -1,3 +1,5 @@
+import { arrayIncludesObject } from './common';
+
 export function declareAboutLibrariesPluginUtil(androidBuildGradleContent: string) {
   if (!androidBuildGradleContent.match(PLUGIN_CLASSPATH)?.length) {
     // Add Gradle Plugin Portal repository if it's not included
@@ -6,13 +8,19 @@ export function declareAboutLibrariesPluginUtil(androidBuildGradleContent: strin
         /repositories\s?{/,
         `repositories {\n        maven { url = uri("${GRADLE_PLUGIN_PORTAL_URL}") }`
       );
+      console.log('Gradle Plugin Portal repository - ADDED');
+    } else {
+      console.log('Gradle Plugin Portal repository already added - SKIP');
     }
 
     // Declare the AboutLibraries plugin
     androidBuildGradleContent = androidBuildGradleContent.replace(
       /dependencies\s?{/,
       `dependencies {\n        classpath '${PLUGIN_CLASSPATH}:${PLUGIN_VERSION}'`
-    );        
+    );
+    console.log('About Libraries Gradle Plugin repository - ADDED');
+  } else {
+    console.log('About Libraries Gradle Plugin already added - SKIP');
   }
 
   return androidBuildGradleContent;
@@ -24,6 +32,9 @@ export function applyAndConfigureAboutLibrariesPluginUtil(androidAppBuildGradleC
 
   if (!androidAppBuildGradleContent.match(applyPluginBlockRegex)?.length) {
     androidAppBuildGradleContent += `\n${PLUGIN_APPLY_BLOCK}`;
+    console.log('About Libraries Gradle Plugin - APPLIED');
+  } else {
+    console.log('About Libraries Gradle Plugin already applied - SKIP');
   }
 
   // Configure plugin
@@ -31,9 +42,38 @@ export function applyAndConfigureAboutLibrariesPluginUtil(androidAppBuildGradleC
 
   if (!androidAppBuildGradleContent.match(pluginConfigRegex)?.length) {
     androidAppBuildGradleContent += '\n\naboutLibraries {\n    configPath = "config"\n    prettyPrint = true\n}';
+    console.log('About Libraries Gradle Plugin - CONFIGURED');
+  } else {
+    console.log('About Libraries Gradle Plugin already configured - SKIP');
   }
 
   return androidAppBuildGradleContent;
+}
+
+export function addAndroidStyleForListActivityUtil<T>(styles: T[]): T[] {
+  const listActivityStyle = prepareListActivityStyle();
+
+  if (!arrayIncludesObject(styles, listActivityStyle)) {
+    styles?.push(listActivityStyle as T);
+    console.log('OSSLicenseListTheme style - ADDED');
+  } else {
+    console.log('OSSLicenseListTheme style already added - SKIP');
+  }
+
+  return styles;
+}
+
+export function addListActivityUtil<T>(activities: T[]): T[] {
+  const listActivity = prepareListActivity();
+    
+  if (!arrayIncludesObject(activities, listActivity)) {
+    activities?.push(listActivity as T);
+    console.log('About Libraries activity - ADDED');
+  } else {
+    console.log('About Libraries activity already added - SKIP');
+  }
+
+  return activities;
 }
 
 /**
@@ -46,7 +86,7 @@ export function applyAndConfigureAboutLibrariesPluginUtil(androidAppBuildGradleC
  *   android:theme="@style/OSSLicenseListTheme"
  * />
  */
-export function prepareListActivity() {
+function prepareListActivity() {
   return {
     $: {
       'android:name': PLUGIN_ACTIVITY,
@@ -66,7 +106,7 @@ export function prepareListActivity() {
  *   <item name="android:forceDarkAllowed">false</item>
  * </style>
  */
-export function prepareListActivityStyle() {
+function prepareListActivityStyle() {
   return {
     $: {
       name: 'OSSLicenseListTheme',

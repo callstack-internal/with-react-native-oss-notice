@@ -128,6 +128,7 @@ declare module 'xcode' {
     ): pbxFile | null;
     addToPbxBuildFileSection(file: pbxFile): void;
     addToPbxResourcesBuildPhase(file: pbxFile): void;
+    buildPhase(group: string, target: string): string | undefined;
     findPBXGroupKey(criteria: { name?: string; path?: string }): string | undefined;
     generateUuid(): string;
     getTarget(productType: ProductType): { uuid: string; target: PBXNativeTarget } | null;

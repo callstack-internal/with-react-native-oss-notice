@@ -15,8 +15,7 @@ export function applyAndConfigureAboutLibrariesPlugin(config: ExpoConfig): ExpoC
         exportedConfig.modResults.contents
       );
     } else {
-      // TODO: declare plugin when Expo will support Gradle Kotlin scripts
-      console.warn('[<rootProject>/app/build.gradle] Gradle scripts in Kotlin are not supported yet');
+      console.warn('Gradle Kotlin scripts are not supported yet');
     }
 
     return exportedConfig;

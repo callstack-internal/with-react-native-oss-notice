@@ -13,8 +13,7 @@ export function declareAboutLibrariesPlugin(config: ExpoConfig): ExpoConfig {
     if (exportedConfig.modResults.language === 'groovy') {
       exportedConfig.modResults.contents = declareAboutLibrariesPluginUtil(exportedConfig.modResults.contents);
     } else {
-      // TODO: declare plugin when Expo will support Gradle Kotlin scripts
-      console.warn('[<rootProject>/build.gradle] Gradle scripts in Kotlin are not supported yet');
+      console.warn('Gradle Kotlin scripts are not supported yet');
     }
 
     return exportedConfig;

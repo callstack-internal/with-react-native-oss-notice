@@ -37,6 +37,35 @@ type LicensePlistPayload = {
   version: string;
 };
 
+function compareObjects(a: unknown, b: unknown): boolean {
+  if (a == null || b == null || typeof a !== 'object' || typeof b !== 'object') {
+    return a === b;
+  }
+
+  const entriesA = Object.entries(a);
+  const entriesB = Object.entries(b);
+
+  return entriesA.length === entriesB.length && entriesA.map(
+    ([ keyA, valueA ]) => {
+      const entry = entriesB.find(([ keyB ]) => keyA === keyB);
+
+      if (!entry) {
+        return valueA === entry;
+      }
+
+      const [ , valueB ] = entry;
+
+      return compareObjects(valueA, valueB);
+    })
+    .reduce((acc, curr) => acc && curr, true);
+}
+
+export function arrayIncludesObject(array?: unknown[], object?: unknown) {
+  return array
+    ?.map((item) => compareObjects(item, object))
+    .reduce((acc, curr) => acc || curr, false);
+}
+
 export function scanDependencies(appPackageJsonPath: string) {
   const appPackageJson = require(path.resolve(appPackageJsonPath));
   const dependencies: Record<string, string> = appPackageJson.dependencies;

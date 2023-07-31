@@ -30,9 +30,9 @@ export function addSettingsBundleUtil(
 
     // Link `Settings.bundle` to the resources
     addResourceFileToGroup({ settingsBundleFilename });
+    console.log('Settings.bundle/Root.plist - ADDED');
   } else {
-    // TODO: handle the case, where `Settings.bundle` is already created
-    console.warn('[<rootProject>/ios/Settings.bundle/Root.plist] Settings.bundle/Root.plist is already present');
+    console.log('Settings.bundle/Root.plist already present - SKIP');
   }
 }
 
@@ -40,6 +40,11 @@ export function registerLicensePlistBuildPhaseUtil(
   projectTargetId: string,
   pbxproj: XcodeProject, // Xcode Pbxproj
 ) {
+  if (!!pbxproj.buildPhase(GENERATE_LICENSE_PLIST_BUILD_PHASE_COMMENT, projectTargetId)) {
+    console.log('LicensePlist buildPhase already added - SKIP');
+    return pbxproj;
+  }
+
   /**
    * The build phase will generate licenses metadata using `LicensePlist` library and store it inside `Settings.bundle`.
    * 
@@ -72,6 +77,8 @@ export function registerLicensePlistBuildPhaseUtil(
   );
 
   pbxproj.hash.project.objects['PBXNativeTarget'][projectTargetId].buildPhases = newBuildPhasesInNativeTarget;
+
+  console.log('LicensePlist buildPhase - ADDED');
 
   return pbxproj;
 }
