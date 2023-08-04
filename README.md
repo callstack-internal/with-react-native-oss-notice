@@ -115,7 +115,15 @@ function MyComponent() {
 - ✅ You can use this library with [Development Builds](https://docs.expo.dev/development/introduction/) by adding `with-react-native-oss-notice` to your `app.json`/`app.config.js` plugins array.
 - ❌ This library can't be used in the "Expo Go" app because it [requires custom native code](https://docs.expo.dev/workflow/customizing/).
 
+## Contributing
+
+See the [contributing guide](./CONTRIBUTING) to learn how to contribute to the repository and the development workflow.
+
 ## Acknowledgements
 
 - [AboutLibraries](https://github.com/mikepenz/AboutLibraries) - collects and displays the license metadata for the Android app <3
 - [LicensePlist](https://github.com/mono0926/LicensePlist) - generates license metadata for the iOS app <3
+
+## License
+
+MIT
