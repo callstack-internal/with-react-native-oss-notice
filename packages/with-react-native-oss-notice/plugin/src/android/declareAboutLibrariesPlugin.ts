@@ -5,7 +5,7 @@ import { declareAboutLibrariesPluginUtil } from '../../../plugin-utils/build/and
 
 /**
  * This helper adds AboutLibraries inside `android/build.gradle`
- * 
+ *
  * It's not the best approach, as it's done with regex, but it's the best that can be done right now
  */
 export function declareAboutLibrariesPlugin(config: ExpoConfig): ExpoConfig {

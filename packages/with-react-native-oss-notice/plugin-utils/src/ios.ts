@@ -5,11 +5,7 @@ import type { XcodeProject } from 'xcode';
 
 export function addSettingsBundleUtil(
   iosProjectPath: string,
-  addResourceFileToGroup: ({
-    settingsBundleFilename,
-  }: {
-    settingsBundleFilename: string,
-  }) => void,
+  addResourceFileToGroup: ({ settingsBundleFilename }: { settingsBundleFilename: string }) => void,
 ) {
   const settingsBundleFilename = 'Settings.bundle';
   const settingsBundleRootPlistFilename = 'Root.plist';
@@ -23,10 +19,7 @@ export function addSettingsBundleUtil(
     }
 
     // Create `Settings.bundle/Root.plist`
-    fs.writeFileSync(
-      settingsBundleRootPlistPath,
-      SETTINGS_BUNDLE_ROOT_PLIST_CONTENT,
-    );
+    fs.writeFileSync(settingsBundleRootPlistPath, SETTINGS_BUNDLE_ROOT_PLIST_CONTENT);
 
     // Link `Settings.bundle` to the resources
     addResourceFileToGroup({ settingsBundleFilename });
@@ -40,14 +33,14 @@ export function registerLicensePlistBuildPhaseUtil(
   projectTargetId: string,
   pbxproj: XcodeProject, // Xcode Pbxproj
 ) {
-  if (!!pbxproj.buildPhase(GENERATE_LICENSE_PLIST_BUILD_PHASE_COMMENT, projectTargetId)) {
+  if (pbxproj.buildPhase(GENERATE_LICENSE_PLIST_BUILD_PHASE_COMMENT, projectTargetId)) {
     console.log('LicensePlist buildPhase already added - SKIP');
     return pbxproj;
   }
 
   /**
    * The build phase will generate licenses metadata using `LicensePlist` library and store it inside `Settings.bundle`.
-   * 
+   *
    * This will return an object with the uuid of the newly created build phase and its associated comment.
    */
   const newBuildPhase = pbxproj.addBuildPhase(
@@ -63,7 +56,7 @@ export function registerLicensePlistBuildPhaseUtil(
   /**
    * In order to correctly link all metadata from `Settings.bundle` to the app
    * the newly created build phase has to be invoked before `Copy Bundle Resources` build phase.
-   * 
+   *
    * To make sure that happens, let's put newly created build phase as a first in the sequence.
    * It can be done by overriding `PBXNativeTarget["buildPhases"]` array.
    */
@@ -71,9 +64,9 @@ export function registerLicensePlistBuildPhaseUtil(
   const newBuildPhasesInNativeTarget = [
     { value: newBuildPhase.uuid, comment: GENERATE_LICENSE_PLIST_BUILD_PHASE_COMMENT },
   ].concat(
-    nativeTargetSection[projectTargetId]
-      .buildPhases
-      .filter(({ value }: { value: string }) => value !== newBuildPhase.uuid)
+    nativeTargetSection[projectTargetId].buildPhases.filter(
+      ({ value }: { value: string }) => value !== newBuildPhase.uuid,
+    ),
   );
 
   pbxproj.hash.project.objects['PBXNativeTarget'][projectTargetId].buildPhases = newBuildPhasesInNativeTarget;

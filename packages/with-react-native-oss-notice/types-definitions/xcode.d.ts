@@ -93,13 +93,15 @@ declare module 'xcode' {
       buildPhaseType: 'PBXShellScriptBuildPhase' | 'PBXCopyFilesBuildPhase',
       comment: string,
       target: string,
-      optionsOrFolderType: {
-        inputPaths?: string[]
-        outputPaths?: string[]
-        shellPath: string;
-        shellScript: string;
-      } | string,
-      subfolderPath?: string
+      optionsOrFolderType:
+        | {
+            inputPaths?: string[];
+            outputPaths?: string[];
+            shellPath: string;
+            shellScript: string;
+          }
+        | string,
+      subfolderPath?: string,
     ): {
       uuid: string;
       buildPhase: {
@@ -124,7 +126,7 @@ declare module 'xcode' {
         compilerFlags?: string;
         embed?: boolean;
         sign?: boolean;
-      }
+      },
     ): pbxFile | null;
     addToPbxBuildFileSection(file: pbxFile): void;
     addToPbxResourcesBuildPhase(file: pbxFile): void;

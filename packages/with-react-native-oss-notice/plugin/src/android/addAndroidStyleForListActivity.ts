@@ -8,9 +8,9 @@ import { addAndroidStyleForListActivityUtil } from '../../../plugin-utils/build/
  */
 export function addAndroidStyleForListActivity(config: ExpoConfig): ExpoConfig {
   return withAndroidStyles(config, (exportedConfig) => {
-    if (!!exportedConfig.modResults.resources.style) {
+    if (exportedConfig.modResults.resources.style) {
       exportedConfig.modResults.resources.style = addAndroidStyleForListActivityUtil(
-        exportedConfig.modResults.resources.style
+        exportedConfig.modResults.resources.style,
       );
     }
 

@@ -4,14 +4,14 @@ import xcode from 'xcode';
 
 const glob = require('glob');
 
-const ignoredPaths = [ '**/@(Carthage|Pods|vendor|node_modules)/**' ];
+const ignoredPaths = ['**/@(Carthage|Pods|vendor|node_modules)/**'];
 
 export function getApplicationNativeTarget(iosProjectPath: string) {
   return getIOSPbxProj(iosProjectPath).pbxproj.getTarget('com.apple.product-type.application');
 }
 
 export function getIOSProjectName(iosProjectPath: string) {
-  const [ appDelegatePath ] = glob.sync('*/AppDelegate.@(m|mm|swift)', {
+  const [appDelegatePath] = glob.sync('*/AppDelegate.@(m|mm|swift)', {
     cwd: iosProjectPath,
     absolute: true,
     nocase: true,
@@ -23,7 +23,7 @@ export function getIOSProjectName(iosProjectPath: string) {
 }
 
 export function getIOSPbxProj(iosProjectPath: string) {
-  const [ xcodeprojPath ] = glob.sync('*.xcodeproj', {
+  const [xcodeprojPath] = glob.sync('*.xcodeproj', {
     cwd: iosProjectPath,
     absolute: true,
     nocase: true,

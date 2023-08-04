@@ -6,7 +6,7 @@ export function declareAboutLibrariesPluginUtil(androidBuildGradleContent: strin
     if (!androidBuildGradleContent.match(GRADLE_PLUGIN_PORTAL_URL)?.length) {
       androidBuildGradleContent = androidBuildGradleContent.replace(
         /repositories\s?{/,
-        `repositories {\n        maven { url = uri("${GRADLE_PLUGIN_PORTAL_URL}") }`
+        `repositories {\n        maven { url = uri("${GRADLE_PLUGIN_PORTAL_URL}") }`,
       );
       console.log('Gradle Plugin Portal repository - ADDED');
     } else {
@@ -16,7 +16,7 @@ export function declareAboutLibrariesPluginUtil(androidBuildGradleContent: strin
     // Declare the AboutLibraries plugin
     androidBuildGradleContent = androidBuildGradleContent.replace(
       /dependencies\s?{/,
-      `dependencies {\n        classpath '${PLUGIN_CLASSPATH}:${PLUGIN_VERSION}'`
+      `dependencies {\n        classpath '${PLUGIN_CLASSPATH}:${PLUGIN_VERSION}'`,
     );
     console.log('About Libraries Gradle Plugin repository - ADDED');
   } else {
@@ -65,7 +65,7 @@ export function addAndroidStyleForListActivityUtil<T>(styles: T[]): T[] {
 
 export function addListActivityUtil<T>(activities: T[]): T[] {
   const listActivity = prepareListActivity();
-    
+
   if (!arrayIncludesObject(activities, listActivity)) {
     activities?.push(listActivity as T);
     console.log('About Libraries activity - ADDED');
@@ -78,7 +78,7 @@ export function addListActivityUtil<T>(activities: T[]): T[] {
 
 /**
  * This will evaluate to:
- * 
+ *
  * <activity
  *   android:name="com.mikepenz.aboutlibraries.ui.LibsActivity"
  *   android:exported="false"
@@ -99,7 +99,7 @@ function prepareListActivity() {
 
 /**
  * This will evaluate to:
- * 
+ *
  * <style name="OSSLicenseListTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
  *   <item name="android:statusBarColor">#F3EFEE</item>
  *   <item name="android:windowBackground">#F3EFEE</item>
@@ -137,7 +137,7 @@ function prepareListActivityStyle() {
 
 const GRADLE_PLUGIN_PORTAL_URL = 'https://plugins.gradle.org/m2';
 const PLUGIN_ACTIVITY = 'com.mikepenz.aboutlibraries.ui.LibsActivity';
-const PLUGIN_APPLY_BLOCK = 'apply plugin: \'com.mikepenz.aboutlibraries.plugin\'';
+const PLUGIN_APPLY_BLOCK = "apply plugin: 'com.mikepenz.aboutlibraries.plugin'";
 const PLUGIN_APPLY_BLOCK_IDENTIFIER = 'com.mikepenz.aboutlibraries.plugin';
 const PLUGIN_CLASSPATH = 'com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin';
 const PLUGIN_VERSION = '10.8.3';
