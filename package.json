@@ -6,7 +6,6 @@
     ]
   },
   "scripts": {
-    "install-git-hooks": "lefthook install",
     "build-library": "yarn build-plugins && yarn workspace with-react-native-oss-notice build-library",
     "build-plugins": "tsc -p packages/with-react-native-oss-notice/plugin-utils/tsconfig.json && tsc -p packages/with-react-native-oss-notice/bare-plugin/tsconfig.json && tsc -p packages/with-react-native-oss-notice/plugin/tsconfig.json",
     "lint:js": "eslint \"**/*.{js,ts,tsx}\"",

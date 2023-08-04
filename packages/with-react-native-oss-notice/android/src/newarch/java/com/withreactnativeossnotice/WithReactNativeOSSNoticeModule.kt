@@ -10,7 +10,7 @@ class WithReactNativeOSSNoticeModule(
     override fun getName() = NAME
 
     override fun launchLicenseListScreen(licenseHeaderText: String) {
-        launchLicenseListScreen(reactApplicationContext, licenseHeaderText)
+        WithReactNativeOSSNoticeModuleImpl.launchLicenseListScreen(reactApplicationContext, licenseHeaderText)
     }
 
     companion object {

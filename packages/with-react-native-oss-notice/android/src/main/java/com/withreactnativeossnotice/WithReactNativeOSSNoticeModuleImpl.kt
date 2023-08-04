@@ -4,7 +4,7 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.mikepenz.aboutlibraries.LibsBuilder
 
 object WithReactNativeOSSNoticeModuleImpl {
-    const val NAME = "WithReactNativeOSSNotice"
+    const val NAME = "WithReactNativeOSSNoticeModule"
 
     fun launchLicenseListScreen(reactContext: ReactApplicationContext, licenseHeaderText: String) {
         val intent = LibsBuilder().withActivityTitle(licenseHeaderText).intent(reactContext)

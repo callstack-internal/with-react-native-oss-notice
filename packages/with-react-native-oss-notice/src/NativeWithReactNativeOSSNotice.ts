@@ -5,4 +5,4 @@ export interface Spec extends TurboModule {
   launchLicenseListScreen(licenseHeaderText: string): void;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('WithReactNativeOSSNotice');
+export default TurboModuleRegistry.getEnforcing<Spec>('WithReactNativeOSSNoticeModule');

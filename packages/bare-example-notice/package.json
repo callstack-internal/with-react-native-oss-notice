@@ -3,15 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android": "react-native run-android --no-packager",
+    "ios": "react-native run-ios --no-packager",
     "lint": "eslint .",
-    "start": "react-native start",
+    "start": "react-native start --config ./metro.config.js",
     "test": "jest"
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.72.3"
+    "react-native": "0.72.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -16,7 +16,7 @@ export default function App() {
       <Text onPress={launchNotice} style={styles.label}>
         Open up App.tsx to start working on your app!
       </Text>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </View>
   );
 }

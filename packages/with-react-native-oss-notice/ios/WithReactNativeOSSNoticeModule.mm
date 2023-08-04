@@ -5,13 +5,13 @@
 #if RCT_NEW_ARCH_ENABLED
 #import "WithReactNativeOSSNotice.h"
 
-@interface WithReactNativeOSSNoticeModule () <NativeWithReactNativeOSSNoticeModuleSpec>
+@interface WithReactNativeOSSNoticeModule () <NativeWithReactNativeOSSNoticeSpec>
 @end
 #endif
 
 @implementation WithReactNativeOSSNoticeModule
 
-RCT_EXPORT_MODULE(WithReactNativeOSSNotice)
+RCT_EXPORT_MODULE(WithReactNativeOSSNoticeModule)
 
 RCT_EXPORT_METHOD(launchLicenseListScreen : (NSString *)licenseHeaderText)
 {
@@ -22,7 +22,7 @@ RCT_EXPORT_METHOD(launchLicenseListScreen : (NSString *)licenseHeaderText)
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
 {
-    return std::make_shared<facebook::react::NativeWithReactNativeOSSNoticeModuleSpecJSI>(params);
+    return std::make_shared<facebook::react::NativeWithReactNativeOSSNoticeSpecJSI>(params);
 }
 #endif
 
