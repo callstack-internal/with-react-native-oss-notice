@@ -63,10 +63,16 @@ function compareObjects(a: unknown, b: unknown): boolean {
   );
 }
 
+/**
+ * Makes a deep-check between array items and provided object, returns true if array has provided object.
+ */
 export function arrayIncludesObject(array?: unknown[], object?: unknown) {
   return array?.map((item) => compareObjects(item, object)).reduce((acc, curr) => acc || curr, false);
 }
 
+/**
+ * Scans `package.json` and searches for all packages under `dependencies` field. Supports monorepo projects.
+ */
 export function scanDependencies(appPackageJsonPath: string) {
   const appPackageJson = require(path.resolve(appPackageJsonPath));
   const dependencies: Record<string, string> = appPackageJson.dependencies;
@@ -98,6 +104,19 @@ export function scanDependencies(appPackageJsonPath: string) {
   );
 }
 
+/**
+ * Generates LicensePlist-compatible metadata for NPM dependencies
+ *
+ * This will take scanned NPM licenses and produce following output inside iOS project's directory:
+ *
+ * | - ios
+ * | ---- myawesomeapp
+ * | ---- myawesomeapp.xcodeproj
+ * | ---- myawesomeapp.xcodeworkspace
+ * | ---- license_plist.yml <--- generated LicensePlist config with NPM dependencies
+ * | ---- Podfile
+ * | ---- Podfile.lock
+ */
 export function generateLicensePlistNPMOutput(licenses: Record<string, LicenseObj>, iosProjectPath: string) {
   const librariesPayload = Object.entries(licenses)
     .map(([dependency, licenseObj]) => {
@@ -123,6 +142,19 @@ ${yamlPayload.source ? `    source: ${yamlPayload.source}\n` : ''}    body: |-\n
   fs.writeFileSync(path.join(iosProjectPath, 'license_plist.yml'), librariesPayload, { encoding: 'utf-8' });
 }
 
+/**
+ * Generates AboutLibraries-compatible metadata for NPM dependencies
+ *
+ * This will take scanned NPM licenses and produce following output inside android project's directory:
+ *
+ * | - android
+ * | ---- app
+ * | ---- config <--- generated AboutLibraries config directory
+ * | ------- libraries <--- generated directory with JSON files list of NPM dependencies
+ * | ------- licenses <--- generated directory with JSON files list of used licenses
+ * | ---- build.gradle
+ * | ---- settings.gradle
+ */
 export function generateAboutLibrariesNPMOutput(licenses: Record<string, LicenseObj>, androidProjectPath: string) {
   const aboutLibrariesConfigDirPath = path.join(androidProjectPath, 'config');
   const aboutLibrariesConfigLibrariesDirPath = path.join(aboutLibrariesConfigDirPath, 'libraries');

@@ -7,6 +7,12 @@ import { generateLicensePlistNPMOutput, scanDependencies } from '../../../plugin
 import { addSettingsBundle } from './addSettingsBundle';
 import { registerLicensePlistBuildPhase } from './registerLicensePlistBuildPhase';
 
+/**
+ * Implementation of config plugin for iOS setup
+ *
+ * It scans the NPM dependencies, generates LicensePlist-compatible metadata,
+ * configures Settings.bundle and registers a shell script generating LicensePlist metadata for iOS dependencies
+ */
 export const withIosNotice: ConfigPlugin = (config) => {
   withXcodeProject(config, async (exportedConfig) => {
     const licenses = scanDependencies(path.join(exportedConfig.modRequest.projectRoot, 'package.json'));

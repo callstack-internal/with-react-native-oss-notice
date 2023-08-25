@@ -4,9 +4,9 @@ import { withProjectBuildGradle } from 'expo/config-plugins';
 import { declareAboutLibrariesPluginUtil } from '../../../plugin-utils/build/android';
 
 /**
- * This helper adds AboutLibraries inside `android/build.gradle`
+ * Modifies root build.gradle with a declaration for AboutLibraries Gradle plugin
  *
- * It's not the best approach, as it's done with regex, but it's the best that can be done right now
+ * NOTE: As of now, it doesn't support build.gradle.kts (Gradle Kotlin Script)
  */
 export function declareAboutLibrariesPlugin(config: ExpoConfig): ExpoConfig {
   return withProjectBuildGradle(config, (exportedConfig) => {

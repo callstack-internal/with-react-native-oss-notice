@@ -4,7 +4,7 @@ import { IOSConfig, withXcodeProject } from 'expo/config-plugins';
 import { addSettingsBundleUtil } from '../../../plugin-utils/build/ios';
 
 /**
- * This helper configures `Settings.bundle` for the app
+ * Creates a Settings.bundle and links it to all application native targets
  */
 export function addSettingsBundle(config: ExpoConfig): ExpoConfig {
   return withXcodeProject(config, (exportedConfig) => {

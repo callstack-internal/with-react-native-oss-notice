@@ -4,7 +4,7 @@ import { withAndroidManifest } from 'expo/config-plugins';
 import { addListActivityUtil } from '../../../plugin-utils/build/android';
 
 /**
- * This helper adds custom activity to the app in `android/app/src/main/AndroidManifest.xml`
+ * Adds an Android Activity with list of dependencies and their licenses to project's AndroidManifest.xml
  */
 export function addListActivity(config: ExpoConfig): ExpoConfig {
   return withAndroidManifest(config, (exportedConfig) => {
