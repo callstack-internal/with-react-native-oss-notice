@@ -2,17 +2,21 @@ import fs from 'fs';
 
 import { registerLicensePlistBuildPhaseUtil } from '../../../plugin-utils/build/ios';
 
-import { getApplicationNativeTarget, getIOSPbxProj } from './utils';
+import { getAllApplicationNativeTargets, getIOSPbxProj } from './utils';
 
+/**
+ * Registers a shell script that invokes generation of license metadata with LicensePlist
+ *
+ * It scans available application native targets and for each of them
+ * creates and links a shell script build phase responsible for iOS native deps license metadata
+ */
 export function registerLicensePlistBuildPhase(iosProjectPath: string) {
-  const projectTargetId = getApplicationNativeTarget(iosProjectPath)?.uuid;
-
-  if (!projectTargetId) {
-    throw new Error('Cannot locate iOS application native target');
-  }
-
   const { pbxproj, pbxprojPath } = getIOSPbxProj(iosProjectPath);
-  const modifiedPbxproj = registerLicensePlistBuildPhaseUtil(projectTargetId, pbxproj);
+  const nativeTargets = getAllApplicationNativeTargets(pbxproj);
 
-  fs.writeFileSync(pbxprojPath, modifiedPbxproj.writeSync());
+  nativeTargets.map((nativeTarget) => {
+    registerLicensePlistBuildPhaseUtil(nativeTarget.uuid, pbxproj);
+  });
+
+  fs.writeFileSync(pbxprojPath, pbxproj.writeSync());
 }

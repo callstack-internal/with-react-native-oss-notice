@@ -49,6 +49,37 @@ declare module 'xcode' {
     productType: string;
   }
 
+  interface PBXProject {
+    isa: 'PBXProject';
+    attributes: {
+      LastUpgradeCheck: number;
+      TargetAttributes: Record<
+        string,
+        {
+          CreatedOnToolsVersion?: string;
+          TestTargetID?: string;
+          LastSwiftMigration?: number;
+          ProvisioningStyle?: string;
+        } & Record<string, string | number | undefined>
+      >;
+    };
+    buildConfigurationList: string;
+    buildConfigurationList_comment: string;
+    compatibilityVersion: string;
+    developmentRegion: string;
+    hasScannedForEncodings: number;
+    knownRegions: string[];
+    mainGroup: string;
+    productRefGroup: string;
+    productRefGroup_comment: string;
+    projectDirPath: string;
+    projectRoot: string;
+    targets: {
+      value: string;
+      comment: string;
+    }[];
+  }
+
   type XCObjectType =
     | 'PBXBuildFile'
     | 'PBXFileReference'
@@ -133,6 +164,7 @@ declare module 'xcode' {
     buildPhase(group: string, target: string): string | undefined;
     findPBXGroupKey(criteria: { name?: string; path?: string }): string | undefined;
     generateUuid(): string;
+    getFirstProject(): { uuid: string; firstProject: PBXProject };
     getTarget(productType: ProductType): { uuid: string; target: PBXNativeTarget } | null;
     pbxNativeTargetSection(): Record<string, PBXNativeTarget> & Record<string, string>;
     parseSync(): void;

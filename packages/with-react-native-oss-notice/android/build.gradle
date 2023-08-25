@@ -69,4 +69,7 @@ dependencies {
     implementation("com.mikepenz:aboutlibraries:$aboutLibrariesPluginVersion") {
         exclude group: 'com.mikepenz', module: 'aboutlibraries-core'
     }
+
+    def constraintLayoutVersion = "2.1.4"
+    implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
 }

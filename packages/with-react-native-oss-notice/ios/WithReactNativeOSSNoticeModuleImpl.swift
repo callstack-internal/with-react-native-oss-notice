@@ -69,7 +69,7 @@ public class WithReactNativeOSSNoticeModuleImpl : NSObject {
 
 extension URL {
     func addPathComponent(_ component: String) -> URL {
-        if #available(iOS 16.0, *) {
+        if #available(iOS 16.0, tvOS 16.0, *) {
             return self.appending(component: component)
         }
         

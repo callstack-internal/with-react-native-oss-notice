@@ -3,6 +3,9 @@ import path from 'path';
 
 import type { XcodeProject } from 'xcode';
 
+/**
+ * Creates a Settings.bundle from a template and invokes a callback responsible for linking new file to the iOS project
+ */
 export function addSettingsBundleUtil(
   iosProjectPath: string,
   addResourceFileToGroup: ({ settingsBundleFilename }: { settingsBundleFilename: string }) => void,
@@ -29,12 +32,18 @@ export function addSettingsBundleUtil(
   }
 }
 
+/**
+ * Creates a shell script build phase (if needed) and links it to native targets build phases
+ */
 export function registerLicensePlistBuildPhaseUtil(
   projectTargetId: string,
   pbxproj: XcodeProject, // Xcode Pbxproj
 ) {
+  const nativeTargetSection = pbxproj.pbxNativeTargetSection();
+  const nativeTarget = nativeTargetSection[projectTargetId];
+
   if (pbxproj.buildPhase(GENERATE_LICENSE_PLIST_BUILD_PHASE_COMMENT, projectTargetId)) {
-    console.log('LicensePlist buildPhase already added - SKIP');
+    console.log(`LicensePlist buildPhase already added in "${nativeTarget.name}" - SKIP`);
     return pbxproj;
   }
 
@@ -60,18 +69,13 @@ export function registerLicensePlistBuildPhaseUtil(
    * To make sure that happens, let's put newly created build phase as a first in the sequence.
    * It can be done by overriding `PBXNativeTarget["buildPhases"]` array.
    */
-  const nativeTargetSection = pbxproj.pbxNativeTargetSection();
   const newBuildPhasesInNativeTarget = [
     { value: newBuildPhase.uuid, comment: GENERATE_LICENSE_PLIST_BUILD_PHASE_COMMENT },
-  ].concat(
-    nativeTargetSection[projectTargetId].buildPhases.filter(
-      ({ value }: { value: string }) => value !== newBuildPhase.uuid,
-    ),
-  );
+  ].concat(nativeTarget.buildPhases.filter(({ value }: { value: string }) => value !== newBuildPhase.uuid));
 
-  pbxproj.hash.project.objects['PBXNativeTarget'][projectTargetId].buildPhases = newBuildPhasesInNativeTarget;
+  nativeTarget.buildPhases = newBuildPhasesInNativeTarget;
 
-  console.log('LicensePlist buildPhase - ADDED');
+  console.log(`LicensePlist buildPhase in nativeTarget "${nativeTarget.name}" - ADDED`);
 
   return pbxproj;
 }

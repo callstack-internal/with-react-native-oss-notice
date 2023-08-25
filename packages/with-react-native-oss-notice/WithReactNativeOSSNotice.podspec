@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.description     = package["description"]
   s.homepage        = package["homepage"]
   s.license         = package["license"]
-  s.platforms       = { :ios => "12.0" }
+  s.platforms       = { :ios => "12.0", :tvos => "12.0" }
   s.author          = package["author"]
   s.source          = { :git => package["repository"]["url"], :tag => "#{s.version}" }
 

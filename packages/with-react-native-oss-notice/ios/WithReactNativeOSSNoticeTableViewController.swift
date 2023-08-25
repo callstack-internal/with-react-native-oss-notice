@@ -8,20 +8,26 @@ class WithReactNativeOSSNoticeTableViewController: UITableViewController {
     }
     
     public convenience init(title: String, data: Array<WithReactNativeOSSNoticeLicenseMetadata>) {
+#if os(iOS)
         if #available(iOS 13.0, *) {
             self.init(style: .insetGrouped)
         } else {
             self.init(style: .grouped)
         }
+#else
+        self.init(style: .grouped)
+#endif
         self.title = title
         self.data = data
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+#if os(iOS)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         setupCloseButton()
     }
+#endif
     
     @objc func dismissTableViewController(_ sender: AnyObject) {
         self.navigationController?.dismiss(animated: true)
@@ -49,6 +55,7 @@ class WithReactNativeOSSNoticeTableViewController: UITableViewController {
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
+#if os(iOS)
     private func setupCloseButton() {
         var barButtonSystemItem: UIBarButtonItem.SystemItem = .done
         if #available(iOS 13.0, *) {
@@ -61,4 +68,5 @@ class WithReactNativeOSSNoticeTableViewController: UITableViewController {
             action: #selector(dismissTableViewController(_:))
         )
     }
+#endif
 }

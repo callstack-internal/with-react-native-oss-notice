@@ -2240,79 +2240,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/cli@npm:0.10.10":
-  version: 0.10.10
-  resolution: "@expo/cli@npm:0.10.10"
-  dependencies:
-    "@babel/runtime": ^7.20.0
-    "@expo/code-signing-certificates": 0.0.5
-    "@expo/config": ~8.1.0
-    "@expo/config-plugins": ~7.2.0
-    "@expo/dev-server": 0.5.4
-    "@expo/devcert": ^1.0.0
-    "@expo/env": 0.0.5
-    "@expo/json-file": ^8.2.37
-    "@expo/metro-config": ~0.10.0
-    "@expo/osascript": ^2.0.31
-    "@expo/package-manager": ~1.0.0
-    "@expo/plist": ^0.0.20
-    "@expo/prebuild-config": 6.2.6
-    "@expo/rudder-sdk-node": 1.1.1
-    "@expo/spawn-async": 1.5.0
-    "@expo/xcpretty": ^4.2.1
-    "@urql/core": 2.3.6
-    "@urql/exchange-retry": 0.3.0
-    accepts: ^1.3.8
-    arg: 4.1.0
-    better-opn: ~3.0.2
-    bplist-parser: ^0.3.1
-    cacache: ^15.3.0
-    chalk: ^4.0.0
-    ci-info: ^3.3.0
-    debug: ^4.3.4
-    env-editor: ^0.4.1
-    form-data: ^3.0.1
-    freeport-async: 2.0.0
-    fs-extra: ~8.1.0
-    getenv: ^1.0.0
-    graphql: 15.8.0
-    graphql-tag: ^2.10.1
-    https-proxy-agent: ^5.0.1
-    internal-ip: 4.3.0
-    is-root: ^2.1.0
-    js-yaml: ^3.13.1
-    json-schema-deref-sync: ^0.13.0
-    md5-file: ^3.2.3
-    md5hex: ^1.0.0
-    minipass: 3.1.6
-    node-fetch: ^2.6.7
-    node-forge: ^1.3.1
-    npm-package-arg: ^7.0.0
-    ora: 3.4.0
-    pretty-bytes: 5.6.0
-    progress: 2.0.3
-    prompts: ^2.3.2
-    qrcode-terminal: 0.11.0
-    require-from-string: ^2.0.2
-    requireg: ^0.2.2
-    resolve-from: ^5.0.0
-    semver: ^7.5.3
-    send: ^0.18.0
-    slugify: ^1.3.4
-    structured-headers: ^0.4.1
-    tar: ^6.0.5
-    tempy: ^0.7.1
-    terminal-link: ^2.1.1
-    text-table: ^0.2.0
-    url-join: 4.0.0
-    wrap-ansi: ^7.0.0
-    ws: ^8.12.1
-  bin:
-    expo-internal: build/bin/cli
-  checksum: 9c24ac8070ec968d13735aa8e631e223751a21ef3fdd8bd539ffafc88f363726f797e9a9bc78e56d090b7723bf859d812ec96878ade2be80c4360ced781dfe53
-  languageName: node
-  linkType: hard
-
 "@expo/cli@npm:0.10.11":
   version: 0.10.11
   resolution: "@expo/cli@npm:0.10.11"
@@ -2442,29 +2369,6 @@ __metadata:
     slugify: ^1.3.4
     sucrase: ^3.20.0
   checksum: 95e2f049482f9e20f9bf59975d8d599f5a6ae63e93e8e61e0bf9d7deb8ced121f56a39e5c2fa98570470d51b10f061da2f77c52261e4065270bb9b2629579176
-  languageName: node
-  linkType: hard
-
-"@expo/dev-server@npm:0.5.4":
-  version: 0.5.4
-  resolution: "@expo/dev-server@npm:0.5.4"
-  dependencies:
-    "@expo/bunyan": 4.0.0
-    "@expo/metro-config": ~0.10.0
-    "@expo/osascript": 2.0.33
-    "@expo/spawn-async": ^1.5.0
-    body-parser: ^1.20.1
-    chalk: ^4.0.0
-    connect: ^3.7.0
-    fs-extra: 9.0.0
-    is-docker: ^2.0.0
-    is-wsl: ^2.1.1
-    node-fetch: ^2.6.0
-    open: ^8.3.0
-    resolve-from: ^5.0.0
-    serialize-error: 6.0.0
-    temp-dir: ^2.0.0
-  checksum: a7e5dfec2727ff455be4e366d932bf69389caad1f9ae6312c7a12d010ca7c27d517f0ccaf8aedee8ab479e852a8cbaa4b1333682d1990f7118eabd469a37b8f5
   languageName: node
   linkType: hard
 
@@ -7232,16 +7136,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-modules-core@npm:1.5.6":
-  version: 1.5.6
-  resolution: "expo-modules-core@npm:1.5.6"
-  dependencies:
-    compare-versions: ^3.4.0
-    invariant: ^2.2.4
-  checksum: 22da02d19bb82fb290284687fd5f2bfb39d25ab9d207bf6ec4f53deb741dc9867abaac922ea7177cdbc5b31673f10ce70e6d1132a430a1f9ed8c49a324f5167f
-  languageName: node
-  linkType: hard
-
 "expo-modules-core@npm:1.5.9":
   version: 1.5.9
   resolution: "expo-modules-core@npm:1.5.9"
@@ -7267,36 +7161,6 @@ __metadata:
   version: 1.6.0
   resolution: "expo-status-bar@npm:1.6.0"
   checksum: e9fe7eeac4dfb3a534d79b6fa0df2a3d2e4c69edeb3573e408ca8d3b7d192627b3f9638c8f656bea9af0a6660f27c99c5da504a508294893dbe359ad5f1d6ab3
-  languageName: node
-  linkType: hard
-
-"expo@npm:^49.0.0":
-  version: 49.0.2
-  resolution: "expo@npm:49.0.2"
-  dependencies:
-    "@babel/runtime": ^7.20.0
-    "@expo/cli": 0.10.10
-    "@expo/config": 8.1.2
-    "@expo/config-plugins": 7.2.5
-    "@expo/vector-icons": ^13.0.0
-    babel-preset-expo: ~9.5.0
-    expo-application: ~5.3.0
-    expo-asset: ~8.10.1
-    expo-constants: ~14.4.2
-    expo-file-system: ~15.4.2
-    expo-font: ~11.4.0
-    expo-keep-awake: ~12.3.0
-    expo-modules-autolinking: 1.5.0
-    expo-modules-core: 1.5.6
-    fbemitter: ^3.0.0
-    invariant: ^2.2.4
-    md5-file: ^3.2.3
-    node-fetch: ^2.6.7
-    pretty-format: ^26.5.2
-    uuid: ^3.4.0
-  bin:
-    expo: bin/cli
-  checksum: 8f6ce1e945e132e6165c25307e30b132f5936b1e64167e5b9d9e1eec368bd4127bf80141835f60e5a39874bad86b5c36b8405c2b3f290f96d653dbdda5296073
   languageName: node
   linkType: hard
 
@@ -12305,54 +12169,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:0.72.3":
-  version: 0.72.3
-  resolution: "react-native@npm:0.72.3"
-  dependencies:
-    "@jest/create-cache-key-function": ^29.2.1
-    "@react-native-community/cli": 11.3.5
-    "@react-native-community/cli-platform-android": 11.3.5
-    "@react-native-community/cli-platform-ios": 11.3.5
-    "@react-native/assets-registry": ^0.72.0
-    "@react-native/codegen": ^0.72.6
-    "@react-native/gradle-plugin": ^0.72.11
-    "@react-native/js-polyfills": ^0.72.1
-    "@react-native/normalize-colors": ^0.72.0
-    "@react-native/virtualized-lists": ^0.72.6
-    abort-controller: ^3.0.0
-    anser: ^1.4.9
-    base64-js: ^1.1.2
-    deprecated-react-native-prop-types: 4.1.0
-    event-target-shim: ^5.0.1
-    flow-enums-runtime: ^0.0.5
-    invariant: ^2.2.4
-    jest-environment-node: ^29.2.1
-    jsc-android: ^250231.0.0
-    memoize-one: ^5.0.0
-    metro-runtime: 0.76.7
-    metro-source-map: 0.76.7
-    mkdirp: ^0.5.1
-    nullthrows: ^1.1.1
-    pretty-format: ^26.5.2
-    promise: ^8.3.0
-    react-devtools-core: ^4.27.2
-    react-refresh: ^0.4.0
-    react-shallow-renderer: ^16.15.0
-    regenerator-runtime: ^0.13.2
-    scheduler: 0.24.0-canary-efb381bbf-20230505
-    stacktrace-parser: ^0.1.10
-    use-sync-external-store: ^1.0.0
-    whatwg-fetch: ^3.0.0
-    ws: ^6.2.2
-    yargs: ^17.6.2
-  peerDependencies:
-    react: 18.2.0
-  bin:
-    react-native: cli.js
-  checksum: 6d7565ab675a0103bb6e2e5058c173673a0312c1aebcde507b78941a415f8475f7829867ed067532767b111db99b45fa179d88717ff811270070a2f5d05d0fac
-  languageName: node
-  linkType: hard
-
 "react-refresh@npm:^0.4.0":
   version: 0.4.3
   resolution: "react-refresh@npm:0.4.3"
@@ -14710,11 +14526,11 @@ __metadata:
   resolution: "with-react-native-oss-notice@workspace:packages/with-react-native-oss-notice"
   dependencies:
     "@types/xml2js": ^0.4.11
-    expo: ^49.0.0
+    expo: ~49.0.2
     expo-module-scripts: ^3.0.11
     glob: ^7.1.3
     react: 18.2.0
-    react-native: 0.72.3
+    react-native: 0.72.2
     react-native-builder-bob: 0.21.3
     xcode: ^3.0.1
     xml2js: ^0.6.2

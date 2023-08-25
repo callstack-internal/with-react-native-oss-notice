@@ -29,24 +29,19 @@
     "registry": "https://registry.npmjs.org/"
   },
   "files": [
-    "src",
-    "lib",
-    "android",
+    "android/src",
+    "android/build.gradle",
+    "android/react-native-helpers.gradle",
+    "bare-plugin",
     "ios",
-    "cpp",
-    "WithReactNativeOSSNotice.podspec",
-    "jest",
+    "lib",
+    "plugin",
+    "plugin-utils",
+    "src",
     "LICENSE",
-    "!android/.gradle",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/spotless.gradle",
-    "!ios/build",
-    "!**/__tests__",
-    "!**/__fixtures__",
-    "!**/__mocks__"
+    "app.plugin.js",
+    "react-native.config.js",
+    "WithReactNativeOSSNotice.podspec"
   ],
   "scripts": {
     "build-library": "bob build",
@@ -54,10 +49,10 @@
   },
   "devDependencies": {
     "@types/xml2js": "^0.4.11",
-    "expo": "^49.0.0",
+    "expo": "~49.0.2",
     "expo-module-scripts": "^3.0.11",
     "react": "18.2.0",
-    "react-native": "0.72.3",
+    "react-native": "0.72.2",
     "react-native-builder-bob": "0.21.3"
   },
   "dependencies": {
