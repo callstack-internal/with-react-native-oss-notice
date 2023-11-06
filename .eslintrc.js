@@ -26,18 +26,6 @@ const config = {
         alphabetize: { order: 'asc' },
       },
     ],
-    'max-len': [
-      'error',
-      {
-        code: 120,
-        ignoreComments: true,
-        ignoreRegExpLiterals: true,
-        ignoreStrings: true,
-        ignoreTemplateLiterals: true,
-        ignoreTrailingComments: true,
-        tabWidth: 2,
-      },
-    ],
     'no-empty-pattern': 'off',
     'no-underscore-dangle': 'error',
     'padding-line-between-statements': [
