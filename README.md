@@ -2,13 +2,9 @@
 
 Automagically generate license acknowledgements for your React Native app 🚀
 
-| Android | iOS |
-| - | - |
-| ![Android example](./static/android-expo.gif) | ![iOS example](./static/ios-expo.gif) |
-
-| AndroidTV | tvOS |
-| - | - |
-| ![AndroidTV example](./static/android-tv.gif) | ![tvOS example](./static/tvos.gif) |
+| Android | iOS | AndroidTV | tvOS |
+| - | - | - | - |
+| ![Android example](./static/android-expo.gif) | ![iOS example](./static/ios-expo.gif) | ![AndroidTV example](./static/android-tv.gif) | ![tvOS example](./static/tvos.gif) |
 
 ## Installation
 
