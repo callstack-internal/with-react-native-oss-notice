@@ -83,7 +83,7 @@ The codebase of Expo Config Plugin is located in:
 To test the changes, build the plugin run (from the root directory, the one with consisting all workspaces):
 
 ```sh
-yarn build-plugins
+yarn workspace with-react-native-oss-notice build-plugins
 ```
 
 and then, run (from the Expo example app's directory):
@@ -103,7 +103,7 @@ The codebase of RN CLI plugin is located in:
 To test the changes, build the plugin run (from the root directory, the one with consisting all workspaces):
 
 ```sh
-yarn build-plugins
+yarn workspace with-react-native-oss-notice build-plugins
 ```
 
 and then just run the plugin (from the bare RN example app's directory):
@@ -169,8 +169,7 @@ yarn release
 
 The `package.json` file contains various scripts for common tasks:
 
-- `yarn build-library`: compile the library code with babel.
-- `yarn build-plugins`: build plugins (Expo Config Plugin & RN CLI Plugin).
+- `yarn build:library`: compile the library code with babel.
 - `yarn lint:js`: lint files with ESLint.
 - `yarn typescript`: type-check files with TypeScript.
 

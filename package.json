@@ -6,10 +6,9 @@
     ]
   },
   "scripts": {
-    "build-library": "yarn build-plugins && yarn workspace with-react-native-oss-notice build-library",
-    "build-plugins": "tsc -p packages/with-react-native-oss-notice/plugin-utils/tsconfig.json && tsc -p packages/with-react-native-oss-notice/bare-plugin/tsconfig.json && tsc -p packages/with-react-native-oss-notice/plugin/tsconfig.json",
+    "build:library": "yarn workspace with-react-native-oss-notice build-plugins && yarn workspace with-react-native-oss-notice build-library",
     "lint:js": "eslint \"**/*.{js,ts,tsx}\"",
-    "typescript": "yarn build-library && tsc --noEmit -p packages/bare-example-notice/tsconfig.json && tsc --noEmit -p packages/bare-example-notice/tsconfig.json"
+    "typescript": "yarn build:library && tsc --noEmit -p packages/bare-example-notice/tsconfig.json && tsc --noEmit -p packages/bare-example-notice/tsconfig.json"
   },
   "repository": "https://github.com/mateusz1913/with-react-native-oss-notice",
   "author": "Mateusz Mędrek <luigimario1913@gmail.com> (https://github.com/mateusz1913)",
