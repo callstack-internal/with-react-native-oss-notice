@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { WithReactNativeOSSNotice } from 'with-react-native-oss-notice';
 
-const BACKGROUND_COLOR = '#fff';
-const FONT_COLOR = '#000';
+const BUTTON_BACKGROUND_COLOR = '#8232ff';
+const BUTTON_FONT_COLOR = '#FFF';
+const BUTTON_RIPPLE_COLOR = '#8232ffba';
 
 export default function App() {
   function launchNotice() {
@@ -13,22 +14,42 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text onPress={launchNotice} style={styles.label}>
-        Open up App.tsx to start working on your app!
-      </Text>
+      <Pressable
+        accessibilityRole="button"
+        android_ripple={{
+          color: BUTTON_RIPPLE_COLOR,
+          foreground: true,
+        }}
+        onPress={launchNotice}
+        style={({ pressed }) => [styles.button, pressed && styles.pressed]}
+      >
+        <Text style={styles.label}>Tap to see list of OSS libraries</Text>
+      </Pressable>
       <StatusBar style="dark" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  button: {
+    backgroundColor: BUTTON_BACKGROUND_COLOR,
+    borderRadius: 20,
+    overflow: 'hidden',
+    padding: 20,
+  },
   container: {
     flex: 1,
-    backgroundColor: BACKGROUND_COLOR,
     alignItems: 'center',
     justifyContent: 'center',
   },
   label: {
-    color: FONT_COLOR,
+    color: BUTTON_FONT_COLOR,
+    fontSize: 20,
+  },
+  pressed: {
+    opacity: Platform.select({
+      android: 1,
+      default: 0.4,
+    }),
   },
 });
