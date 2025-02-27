@@ -96,4 +96,4 @@ const PLUGIN_ACTIVITY = 'com.withreactnativeossnotice.WithReactNativeOSSNoticeAc
 const PLUGIN_APPLY_BLOCK = "apply plugin: 'com.mikepenz.aboutlibraries.plugin'";
 const PLUGIN_APPLY_BLOCK_IDENTIFIER = 'com.mikepenz.aboutlibraries.plugin';
 const PLUGIN_CLASSPATH = 'com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin';
-const PLUGIN_VERSION = '10.8.3';
+const PLUGIN_VERSION = '11.6.3';

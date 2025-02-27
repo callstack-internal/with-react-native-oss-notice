@@ -29,7 +29,6 @@ class WithReactNativeOSSNoticeTurboPackage: TurboReactPackage() {
                     moduleClass.name,
                     true,
                     reactModule.needsEagerInit,
-                    reactModule.hasConstants,
                     reactModule.isCxxModule,
                     TurboModule::class.java.isAssignableFrom(moduleClass)
                 )

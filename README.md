@@ -22,7 +22,7 @@ npm i --save with-react-native-oss-notice
 
 This tool is split into 2 parts:
 - a library that lets you display native screen with a list of all dependencies and their licenses
-- a [config plugin](https://docs.expo.dev/config-plugins/introduction/?redirected) (for Expo projects) and a [custom cli plugin](https://github.com/react-native-community/cli/blob/main/docs/plugins.md) (for bare RN projects)
+- a [config plugin](https://docs.expo.dev/config-plugins/introduction/?redirected) (for Expo projects) and a [custom community cli plugin](https://github.com/react-native-community/cli/blob/main/docs/plugins.md) (for bare RN projects)
 
 ### I want to generate licenses in my Expo project <a name="usage-expo"></a>
 
@@ -38,27 +38,7 @@ This tool is split into 2 parts:
 }
 ```
 
-2. Set the Kotlin version for the project (might be needed for EAS)
-
-```diff
-{
-  "expo": {
-    "plugins": [
-      "with-react-native-oss-notice"
-+      [
-+        "expo-build-properties",
-+        {
-+          "android": {
-+            "kotlinVersion": "1.7.22" // <-- add a version here for resolution, version can be newer depending on the Expo SDK version used in the project 
-+          }
-+        }
-+      ],
-    ]
-  }
-}
-```
-
-3. Use the library in the codebase
+2. Use the library in the codebase
 
 ```tsx
 import * as React from 'react';
@@ -78,7 +58,7 @@ function MyComponent() {
 }
 ```
 
-4. Use [Prebuild](https://docs.expo.dev/workflow/prebuild/) or [EAS](https://docs.expo.dev/eas/) to build the app
+3. Use [Prebuild](https://docs.expo.dev/workflow/prebuild/) or [EAS](https://docs.expo.dev/eas/) to build the app
 
 ### I want to generate licenses in my bare RN project <a name="usage-bare-rn"></a>
 
