@@ -80,7 +80,13 @@ export function scanDependencies(appPackageJsonPath: string) {
   return Object.keys(dependencies).reduce(
     (acc, dependency) => {
       try {
-        const localPackageJsonPath = require.resolve(`${dependency}/package.json`);
+        const localPackageJsonPath = getPackageJsonPath(dependency);
+
+        if (!localPackageJsonPath) {
+          console.warn(`[with-react-native-oss-notice] skipping ${dependency} could not find package.json`);
+          return acc;
+        }
+
         const localPackageJson = require(path.resolve(localPackageJsonPath));
         const licenseFiles = glob.sync('LICEN{S,C}E{.md,}', {
           cwd: path.dirname(localPackageJsonPath),
@@ -99,7 +105,7 @@ export function scanDependencies(appPackageJsonPath: string) {
           version: localPackageJson.version,
         };
       } catch (error) {
-        console.warn(`package.json is not exported for ${dependency}`);
+        console.warn(`[with-react-native-oss-notice] could not process package.json for ${dependency}`);
       }
 
       return acc;
@@ -271,4 +277,35 @@ function normalizeRepositoryUrl(url: string) {
     .replace('.git', '')
     .replace('github:', 'https://github.com/')
     .replace('.git', '');
+}
+
+function getPackageJsonPath(dependency: string) {
+  try {
+    return require.resolve(`${dependency}/package.json`);
+  } catch (error) {
+    return resolvePackageJsonFromEntry(dependency);
+  }
+}
+
+function resolvePackageJsonFromEntry(dependency: string) {
+  try {
+    const entryPath = require.resolve(dependency);
+    const packageDir = findPackageRoot(entryPath);
+
+    if (!packageDir) return null;
+
+    const packageJsonPath = path.join(packageDir, 'package.json');
+
+    return fs.existsSync(packageJsonPath) ? packageJsonPath : null;
+  } catch {
+    return null;
+  }
+}
+
+function findPackageRoot(entryPath: string) {
+  let currentDir = path.dirname(entryPath);
+  while (currentDir !== path.dirname(currentDir)) {
+    if (fs.existsSync(path.join(currentDir, 'package.json'))) return currentDir;
+    currentDir = path.dirname(currentDir);
+  }
 }
