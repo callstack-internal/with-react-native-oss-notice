@@ -134,7 +134,7 @@ export function generateLicensePlistNPMOutput(licenses: Record<string, LicenseOb
     .reduce((acc, yamlPayload) => {
       return (
         acc +
-        `  - name: "${yamlPayload.name}"
+        `  - name: "${yamlPayload.name.replace(/\//g, '／')}"
     version: ${yamlPayload.version}
 ${yamlPayload.source ? `    source: ${yamlPayload.source}\n` : ''}    body: |-\n      ${yamlPayload.body
           .split('\n')
