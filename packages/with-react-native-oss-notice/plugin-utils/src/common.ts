@@ -79,24 +79,28 @@ export function scanDependencies(appPackageJsonPath: string) {
 
   return Object.keys(dependencies).reduce(
     (acc, dependency) => {
-      const localPackageJsonPath = require.resolve(`${dependency}/package.json`);
-      const localPackageJson = require(path.resolve(localPackageJsonPath));
-      const licenseFiles = glob.sync('LICEN{S,C}E{.md,}', {
-        cwd: path.dirname(localPackageJsonPath),
-        absolute: true,
-        nocase: true,
-        nodir: true,
-        ignore: '**/{__tests__,__fixtures__,__mocks__}/**',
-      });
+      try {
+        const localPackageJsonPath = require.resolve(`${dependency}/package.json`);
+        const localPackageJson = require(path.resolve(localPackageJsonPath));
+        const licenseFiles = glob.sync('LICEN{S,C}E{.md,}', {
+          cwd: path.dirname(localPackageJsonPath),
+          absolute: true,
+          nocase: true,
+          nodir: true,
+          ignore: '**/{__tests__,__fixtures__,__mocks__}/**',
+        });
 
-      acc[dependency] = {
-        author: parseAuthorField(localPackageJson),
-        content: licenseFiles?.[0] ? fs.readFileSync(licenseFiles[0], { encoding: 'utf-8' }) : undefined,
-        description: localPackageJson.description,
-        type: parseLicenseField(localPackageJson),
-        url: parseRepositoryFieldToUrl(localPackageJson),
-        version: localPackageJson.version,
-      };
+        acc[dependency] = {
+          author: parseAuthorField(localPackageJson),
+          content: licenseFiles?.[0] ? fs.readFileSync(licenseFiles[0], { encoding: 'utf-8' }) : undefined,
+          description: localPackageJson.description,
+          type: parseLicenseField(localPackageJson),
+          url: parseRepositoryFieldToUrl(localPackageJson),
+          version: localPackageJson.version,
+        };
+      } catch (error) {
+        console.warn(`package.json is not exported for ${dependency}`);
+      }
 
       return acc;
     },
