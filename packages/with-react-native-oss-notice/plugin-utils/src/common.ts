@@ -140,7 +140,7 @@ export function generateLicensePlistNPMOutput(licenses: Record<string, LicenseOb
     .reduce((acc, yamlPayload) => {
       return (
         acc +
-        `  - name: "${yamlPayload.name.replace(/\//g, '／')}"
+        `  - name: "${normalizePackageName(yamlPayload.name)}"
     version: ${yamlPayload.version}
 ${yamlPayload.source ? `    source: ${yamlPayload.source}\n` : ''}    body: |-\n      ${yamlPayload.body
           .split('\n')
@@ -193,7 +193,7 @@ export function generateAboutLibrariesNPMOutput(licenses: Record<string, License
         name: dependency,
         tag: '',
         type: licenseObj.type,
-        uniqueId: dependency.replace('/', '_'),
+        uniqueId: normalizePackageName(dependency),
       };
     })
     .map((jsonPayload) => {
@@ -212,7 +212,10 @@ export function generateAboutLibrariesNPMOutput(licenses: Record<string, License
         name: jsonPayload.type ?? '',
         url: '',
       };
-      const libraryJsonFilePath = path.join(aboutLibrariesConfigLibrariesDirPath, `${jsonPayload.name}.json`);
+      const libraryJsonFilePath = path.join(
+        aboutLibrariesConfigLibrariesDirPath,
+        `${normalizePackageName(jsonPayload.name)}.json`,
+      );
       const licenseJsonFilePath = path.join(aboutLibrariesConfigLicensesDirPath, `${licenseJsonPayload.hash}.json`);
 
       fs.writeFileSync(libraryJsonFilePath, JSON.stringify(libraryJsonPayload));
@@ -308,4 +311,8 @@ function findPackageRoot(entryPath: string) {
     if (fs.existsSync(path.join(currentDir, 'package.json'))) return currentDir;
     currentDir = path.dirname(currentDir);
   }
+}
+
+function normalizePackageName(packageName: string): string {
+  return packageName.replace('/', '_');
 }
