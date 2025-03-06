@@ -114,6 +114,80 @@ export function scanDependencies(appPackageJsonPath: string) {
   );
 }
 
+function needsQuoting(value: string) {
+  return (
+    value === '' || // empty string
+    /^[#:>|-]/.test(value) || // starts with special char
+    /^['"{}[\],&*#?|<>=!%@`]/.test(value) || // starts with indicator chars
+    /^[\s]|[\s]$/.test(value) || // has leading/trailing whitespace
+    /^[\d.+-]/.test(value) || // looks like a number/bool/null
+    /[\n"'\\\s]/.test(value) || // contains newlines, quotes, backslash, or spaces
+    /^(true|false|yes|no|null|on|off)$/i.test(value) // is a YAML keyword
+  );
+}
+
+function formatYamlKey(key: string) {
+  return /[@/_.]/.test(key) ? `"${key}"` : key;
+}
+
+function formatYamlValue(value: string, indent: number) {
+  if (value.includes('\n')) {
+    const indentedValue = value
+      .split('\n')
+      .map((line) => `${' '.repeat(indent)}${line}`)
+      .join('\n');
+
+    // Return the block indicator on the same line as the content
+    return `|${indentedValue ? '\n' + indentedValue : ''}`;
+  }
+
+  if (needsQuoting(value)) {
+    if (value.includes("'") && !value.includes('"')) {
+      return `"${value.replace(/["\\]/g, '\\$&')}"`;
+    }
+
+    return `'${value.replace(/'/g, "''")}'`;
+  }
+
+  return value;
+}
+
+function toYaml(obj: unknown, indent = 0): string {
+  const spaces = ' '.repeat(indent);
+
+  if (obj == null) return '';
+
+  if (Array.isArray(obj)) {
+    return obj.map((item) => `${spaces}- ${toYaml(item, indent + 2).trimStart()}`).join('\n');
+  }
+
+  if (typeof obj === 'object') {
+    return Object.entries(obj)
+      .filter(([, v]) => v != null)
+      .map(([key, value]) => {
+        const formattedKey = formatYamlKey(key);
+        const formattedValue = toYaml(value, indent + 2);
+
+        if (Array.isArray(value)) {
+          return `${spaces}${formattedKey}:\n${formattedValue}`;
+        }
+
+        if (typeof value === 'object' && value !== null) {
+          return `${spaces}${formattedKey}:\n${formattedValue}`;
+        }
+
+        if (typeof value === 'string' && value.includes('\n')) {
+          return `${spaces}${formattedKey}: ${formattedValue}`;
+        }
+
+        return `${spaces}${formattedKey}: ${formattedValue}`;
+      })
+      .join('\n');
+  }
+
+  return typeof obj === 'string' ? formatYamlValue(obj, indent) : String(obj);
+}
+
 /**
  * Generates LicensePlist-compatible metadata for NPM dependencies
  *
@@ -128,28 +202,34 @@ export function scanDependencies(appPackageJsonPath: string) {
  * | ---- Podfile.lock
  */
 export function generateLicensePlistNPMOutput(licenses: Record<string, LicenseObj>, iosProjectPath: string) {
-  const librariesPayload = Object.entries(licenses)
-    .map(([dependency, licenseObj]) => {
-      return {
-        source: licenseObj.url,
-        name: dependency,
-        version: licenseObj.version,
-        body: licenseObj.content ?? licenseObj.type ?? 'UNKNOWN',
-      } as LicensePlistPayload;
-    })
-    .reduce((acc, yamlPayload) => {
-      return (
-        acc +
-        `  - name: "${normalizePackageName(yamlPayload.name)}"
-    version: ${yamlPayload.version}
-${yamlPayload.source ? `    source: ${yamlPayload.source}\n` : ''}    body: |-\n      ${yamlPayload.body
-          .split('\n')
-          .join('\n      ')}\n`
-      );
-    }, 'manual:\n# BEGIN Generated NPM license entries\n')
-    .concat('# END Generated NPM license entries\n');
+  const renames: Record<string, string> = {};
+  const licenseEntries = Object.entries(licenses).map(([dependency, licenseObj]) => {
+    const normalizedName = normalizePackageName(dependency);
 
-  fs.writeFileSync(path.join(iosProjectPath, 'license_plist.yml'), librariesPayload, { encoding: 'utf-8' });
+    if (dependency !== normalizedName) {
+      renames[normalizedName] = dependency;
+    }
+
+    return {
+      name: normalizedName,
+      version: licenseObj.version,
+      ...(licenseObj.url && { source: licenseObj.url }),
+      body: licenseObj.content ?? licenseObj.type ?? 'UNKNOWN',
+    } as LicensePlistPayload;
+  });
+
+  const yamlDoc = {
+    ...(Object.keys(renames).length > 0 && { rename: renames }),
+    manual: licenseEntries,
+  };
+
+  const yamlContent = [
+    '# BEGIN Generated NPM license entries',
+    toYaml(yamlDoc),
+    '# END Generated NPM license entries',
+  ].join('\n');
+
+  fs.writeFileSync(path.join(iosProjectPath, 'license_plist.yml'), yamlContent, { encoding: 'utf-8' });
 }
 
 /**
