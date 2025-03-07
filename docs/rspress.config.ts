@@ -19,5 +19,6 @@ export default defineConfig({
       },
     ],
   },
+  base: '/with-react-native-oss-notice/',
   plugins: [pluginCallstackTheme()],
 });
