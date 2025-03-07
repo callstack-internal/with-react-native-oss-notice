@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: Quick Start
-      link: /docs/getting-started/quick-start
+      link: /docs/quick-start
     - theme: alt
       text: GitHub
       link: https://github.com/mateusz1913/with-react-native-oss-notice
