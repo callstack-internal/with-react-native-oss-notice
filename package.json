@@ -2,7 +2,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "docs"
     ]
   },
   "scripts": {
@@ -10,13 +11,13 @@
     "lint:js": "eslint \"**/*.{js,ts,tsx}\"",
     "typescript": "yarn build:library && tsc --noEmit -p packages/bare-example-notice/tsconfig.json && tsc --noEmit -p packages/bare-example-notice/tsconfig.json"
   },
-  "repository": "https://github.com/mateusz1913/with-react-native-oss-notice",
+  "repository": "https://github.com/callstackincubator/with-react-native-oss-notice",
   "author": "Mateusz Mędrek <luigimario1913@gmail.com> (https://github.com/mateusz1913)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mateusz1913/with-react-native-oss-notice/issues"
+    "url": "https://github.com/callstackincubator/with-react-native-oss-notice/issues"
   },
-  "homepage": "https://github.com/mateusz1913/with-react-native-oss-notice#readme",
+  "homepage": "https://github.com/callstackincubator/with-react-native-oss-notice#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

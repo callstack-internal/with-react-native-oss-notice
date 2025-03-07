@@ -16,15 +16,15 @@
   "source": "src/index",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mateusz1913/with-react-native-oss-notice.git",
+    "url": "https://github.com/callstackincubator/with-react-native-oss-notice.git",
     "directory": "packages/with-react-native-oss-notice"
   },
   "author": "Mateusz Mędrek <luigimario1913@gmail.com> (https://github.com/mateusz1913)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mateusz1913/with-react-native-oss-notice/issues"
+    "url": "https://github.com/callstackincubator/with-react-native-oss-notice/issues"
   },
-  "homepage": "https://github.com/mateusz1913/with-react-native-oss-notice#readme",
+  "homepage": "https://github.com/callstackincubator/with-react-native-oss-notice#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
