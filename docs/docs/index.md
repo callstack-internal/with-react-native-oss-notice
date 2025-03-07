@@ -10,7 +10,7 @@ hero:
       link: /docs/quick-start
     - theme: alt
       text: GitHub
-      link: https://github.com/mateusz1913/with-react-native-oss-notice
+      link: https://github.com/callstackincubator/with-react-native-oss-notice
 features:
   - title: Native Integration
     details: Uses native platform tools (LicensePlist for iOS and AboutLibraries for Android) to generate and display licenses.

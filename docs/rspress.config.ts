@@ -15,7 +15,7 @@ export default defineConfig({
       {
         icon: 'github',
         mode: 'link',
-        content: 'https://github.com/callstack/with-react-native-oss-notice',
+        content: 'https://github.com/callstackincubator/with-react-native-oss-notice',
       },
     ],
   },
