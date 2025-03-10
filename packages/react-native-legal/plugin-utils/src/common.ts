@@ -83,7 +83,7 @@ export function scanDependencies(appPackageJsonPath: string) {
         const localPackageJsonPath = getPackageJsonPath(dependency);
 
         if (!localPackageJsonPath) {
-          console.warn(`[with-react-native-oss-notice] skipping ${dependency} could not find package.json`);
+          console.warn(`[react-native-legal] skipping ${dependency} could not find package.json`);
           return acc;
         }
 
@@ -105,7 +105,7 @@ export function scanDependencies(appPackageJsonPath: string) {
           version: localPackageJson.version,
         };
       } catch (error) {
-        console.warn(`[with-react-native-oss-notice] could not process package.json for ${dependency}`);
+        console.warn(`[react-native-legal] could not process package.json for ${dependency}`);
       }
 
       return acc;

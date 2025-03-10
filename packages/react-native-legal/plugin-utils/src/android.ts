@@ -76,7 +76,7 @@ export function addListActivityUtil<T>(activities: T[]): T[] {
  * This JS object will evaluate to the following XML content:
  *
  * <activity
- *   android:name="com.withreactnativeossnotice.WithReactNativeOSSNoticeActivity"
+ *   android:name="com.reactnativelegal.ReactNativeLegalActivity"
  *   android:exported="false"
  *   android:launchMode="singleTask"
  * />
@@ -92,7 +92,7 @@ function prepareListActivity() {
 }
 
 const GRADLE_PLUGIN_PORTAL_URL = 'https://plugins.gradle.org/m2';
-const PLUGIN_ACTIVITY = 'com.withreactnativeossnotice.WithReactNativeOSSNoticeActivity';
+const PLUGIN_ACTIVITY = 'com.reactnativelegal.ReactNativeLegalActivity';
 const PLUGIN_APPLY_BLOCK = "apply plugin: 'com.mikepenz.aboutlibraries.plugin'";
 const PLUGIN_APPLY_BLOCK_IDENTIFIER = 'com.mikepenz.aboutlibraries.plugin';
 const PLUGIN_CLASSPATH = 'com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin';
