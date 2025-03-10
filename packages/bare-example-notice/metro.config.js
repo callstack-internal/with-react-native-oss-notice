@@ -9,7 +9,7 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
  * @type {import('metro-config').MetroConfig}
  */
 const config = {
-  watchFolders: [path.join(__dirname, '../../node_modules'), path.join(__dirname, '../with-react-native-oss-notice')],
+  watchFolders: [path.join(__dirname, '../../node_modules'), path.join(__dirname, '../react-native-legal')],
 };
 
 module.exports = mergeConfig(getDefaultConfig(__dirname), config);

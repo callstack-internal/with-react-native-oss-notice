@@ -48,7 +48,7 @@ project.xcworkspace
 
 # Library
 build/
-packages/with-react-native-oss-notice/lib/
+packages/react-native-legal/lib/
 
 # Expo example
 packages/expo-example-notice/android

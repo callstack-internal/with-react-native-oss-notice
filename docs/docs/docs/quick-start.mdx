@@ -6,7 +6,7 @@ import { PackageManagerTabs, Badge } from '@theme';
 
 To get started, install the package using your preferred package manager:
 
-<PackageManagerTabs command="install with-react-native-oss-notice" />
+<PackageManagerTabs command="install react-native-legal" />
 
 ## Setup
 
@@ -19,7 +19,7 @@ If you are using Expo, you need to add the config plugin to your `app.json` or `
 ```diff
 {
   "expo": {
-++  "plugins": ["with-react-native-oss-notice"]
+++  "plugins": ["react-native-legal"]
   }
 }
 ```
@@ -42,7 +42,7 @@ This library **cannot be used** in [Expo Go](https://expo.dev/go) because it req
 
 For bare React Native projects, you need to run the CLI plugin to generate and include license data. Run the following command from your project root:
 
-<PackageManagerTabs command="react-native with-oss-notice" />
+<PackageManagerTabs command="react-native legal-generate" />
 
 This will extract and prepare license metadata for use in your app.
 
@@ -53,10 +53,10 @@ Once the setup is complete, you can easily add a button to your app to display t
 ```tsx
 import * as React from 'react';
 import { Button, View } from 'react-native';
-import { WithReactNativeOSSNotice } from 'with-react-native-oss-notice';
+import { ReactNativeLegal } from 'react-native-legal';
 
 function launchNotice() {
-  WithReactNativeOSSNotice.launchLicenseListScreen('OSS Notice');
+  ReactNativeLegal.launchLicenseListScreen('OSS Notice');
 }
 
 function MyComponent() {
@@ -80,5 +80,5 @@ On **iOS**, all detected licenses will also appear in the **Settings app** under
 ## Monorepo License Handling
 
 :::warning
-`with-react-native-oss-notice` only detects licenses for dependencies listed in the app's `package.json`.   It won't include dependencies used only in monorepo packages unless they are also in `package.json`. To include more licenses, add those dependencies to the app's `package.json`.  
+`react-native-legal` only detects licenses for dependencies listed in the app's `package.json`. It won't include dependencies used only in monorepo packages unless they are also in `package.json`. To include more licenses, add those dependencies to the app's `package.json`.  
 :::

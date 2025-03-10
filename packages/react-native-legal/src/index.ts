@@ -1,0 +1,1 @@
+export { ReactNativeLegal } from './ReactNativeLegal';

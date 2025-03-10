@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="WithOSSNoticeTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:statusBarColor">#F3EFEE</item>
-        <item name="android:windowBackground">#F3EFEE</item>
-    </style>
-</resources>

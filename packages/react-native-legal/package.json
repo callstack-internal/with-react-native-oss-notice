@@ -1,0 +1,96 @@
+{
+  "name": "react-native-legal",
+  "version": "0.0.1",
+  "description": "Acknowledge OSS libraries used in your React Native app",
+  "keywords": [
+    "react-native",
+    "oss",
+    "license",
+    "acknowledgements",
+    "license-management"
+  ],
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/callstackincubator/react-native-legal.git",
+    "directory": "packages/react-native-legal"
+  },
+  "author": "Mateusz Mędrek <luigimario1913@gmail.com> (https://github.com/mateusz1913)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/callstackincubator/react-native-legal/issues"
+  },
+  "homepage": "https://github.com/callstackincubator/react-native-legal#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "android/src",
+    "android/build.gradle",
+    "android/react-native-helpers.gradle",
+    "bare-plugin",
+    "ios",
+    "lib",
+    "plugin",
+    "plugin-utils",
+    "src",
+    "LICENSE",
+    "app.plugin.js",
+    "react-native.config.js",
+    "ReactNativeLegal.podspec"
+  ],
+  "scripts": {
+    "build-library": "bob build",
+    "build-plugins": "tsc -p plugin-utils/tsconfig.json && tsc -p bare-plugin/tsconfig.json && tsc -p plugin/tsconfig.json",
+    "tsc": "tsc"
+  },
+  "devDependencies": {
+    "@types/xml2js": "^0.4.11",
+    "expo": "~52.0.36",
+    "expo-module-scripts": "^4.0.0",
+    "react": "18.3.1",
+    "react-native": "0.76.7",
+    "react-native-builder-bob": "0.23.1"
+  },
+  "dependencies": {
+    "glob": "^7.1.3",
+    "xcode": "^3.0.1",
+    "xml2js": "^0.6.2"
+  },
+  "peerDependencies": {
+    "expo": ">=52.0.0",
+    "react-native": ">=0.76.0"
+  },
+  "peerDependenciesMeta": {
+    "expo": {
+      "optional": true
+    }
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.json",
+          "tsc": "../../node_modules/typescript/bin/tsc"
+        }
+      ]
+    ]
+  },
+  "codegenConfig": {
+    "name": "ReactNativeLegal",
+    "type": "all",
+    "jsSrcsDir": "./src",
+    "android": {
+      "javaPackageName": "com.reactnativelegal"
+    }
+  }
+}

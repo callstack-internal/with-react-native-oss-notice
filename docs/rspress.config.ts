@@ -5,9 +5,9 @@ import { defineConfig } from 'rspress/config';
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
-  title: 'React Native OSS Notice',
-  description: 'React Native OSS Notice Documentation',
-  logoText: 'React Native OSS Notice',
+  title: 'React Native Legal',
+  description: 'React Native Legal Documentation',
+  logoText: 'React Native Legal',
   icon: '/img/notice.png',
   logo: '/img/notice.png',
   themeConfig: {
@@ -15,13 +15,13 @@ export default defineConfig({
       {
         icon: 'github',
         mode: 'link',
-        content: 'https://github.com/callstackincubator/with-react-native-oss-notice',
+        content: 'https://github.com/callstackincubator/react-native-legal',
       },
     ],
     footer: {
       message: `Copyright © ${new Date().getFullYear()} Callstack Open Source`,
     },
   },
-  base: '/with-react-native-oss-notice/',
+  base: '/react-native-legal/',
   plugins: [pluginCallstackTheme()],
 });

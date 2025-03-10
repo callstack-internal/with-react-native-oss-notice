@@ -1510,8 +1510,7 @@ PODS:
     - React-logger (= 0.76.7)
     - React-perflogger (= 0.76.7)
     - React-utils (= 0.76.7)
-  - SocketRocket (0.7.1)
-  - WithReactNativeOSSNotice (0.0.1):
+  - ReactNativeLegal (0.0.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1533,6 +1532,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - SocketRocket (0.7.1)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1600,7 +1600,7 @@ DEPENDENCIES:
   - React-utils (from `../../../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../../../node_modules/react-native/ReactCommon`)
-  - WithReactNativeOSSNotice (from `../../with-react-native-oss-notice`)
+  - ReactNativeLegal (from `../../../node_modules/react-native-legal`)
   - Yoga (from `../../../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1734,8 +1734,8 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../../../node_modules/react-native/ReactCommon"
-  WithReactNativeOSSNotice:
-    :path: "../../with-react-native-oss-notice"
+  ReactNativeLegal:
+    :path: "../../../node_modules/react-native-legal"
   Yoga:
     :path: "../../../node_modules/react-native/ReactCommon/yoga"
 
@@ -1803,10 +1803,10 @@ SPEC CHECKSUMS:
   React-utils: 9f9a6a31d703b136eb1614d914c10a3c96b1e6dd
   ReactCodegen: 5d7e2d2948a6629a51a59ebc99f620e2afb13ee5
   ReactCommon: 04292c6f596181ebf755e7929d96d2148542b0e8
+  ReactNativeLegal: 47ec43e6b86f77555fa07b873e115ec33ed989c1
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  WithReactNativeOSSNotice: 86bcf5317c27608f79106f8ebef38a03023b511d
   Yoga: 90d80701b27946c4b23461c00a7207f300a6ff71
 
 PODFILE CHECKSUM: 029ab563a3a0d431dc23430c3c83634219de8fb3
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2
