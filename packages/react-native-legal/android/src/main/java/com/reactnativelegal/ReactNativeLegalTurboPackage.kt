@@ -1,4 +1,4 @@
-package com.withreactnativeossnotice
+package com.reactnativelegal
 
 import com.facebook.react.TurboReactPackage
 import com.facebook.react.bridge.NativeModule
@@ -8,17 +8,17 @@ import com.facebook.react.module.model.ReactModuleInfo
 import com.facebook.react.module.model.ReactModuleInfoProvider
 import com.facebook.react.turbomodule.core.interfaces.TurboModule
 
-class WithReactNativeOSSNoticeTurboPackage: TurboReactPackage() {
+class ReactNativeLegalTurboPackage: TurboReactPackage() {
     override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
         return when (name) {
-            WithReactNativeOSSNoticeModule.NAME -> WithReactNativeOSSNoticeModule(reactContext)
+            ReactNativeLegalModule.NAME -> ReactNativeLegalModule(reactContext)
             else -> null
         }
     }
 
     override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
         val moduleList: Array<Class<out NativeModule?>> = arrayOf(
-            WithReactNativeOSSNoticeModule::class.java
+            ReactNativeLegalModule::class.java
         )
         val reactModuleInfoMap: MutableMap<String, ReactModuleInfo> = HashMap()
         for (moduleClass in moduleList) {
