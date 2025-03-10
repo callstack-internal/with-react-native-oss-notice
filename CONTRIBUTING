@@ -76,14 +76,14 @@ yarn ios
 
 The codebase of Expo Config Plugin is located in:
 
-- `packages/with-react-native-oss-notice/plugin`
-- `packages/with-react-native-oss-notice/plugin-utils`
-- `packages/with-react-native-oss-notice/app.plugin.js` (the entry point)
+- `packages/react-native-legal/plugin`
+- `packages/react-native-legal/plugin-utils`
+- `packages/react-native-legal/app.plugin.js` (the entry point)
 
 To test the changes, build the plugin run (from the root directory, the one with consisting all workspaces):
 
 ```sh
-yarn workspace with-react-native-oss-notice build-plugins
+yarn workspace react-native-legal build-plugins
 ```
 
 and then, run (from the Expo example app's directory):
@@ -96,20 +96,20 @@ yarn expo prebuild --clean
 
 The codebase of RN CLI plugin is located in:
 
-- `packages/with-react-native-oss-notice/bare-plugin`
-- `packages/with-react-native-oss-notice/plugin-utils`
-- `packages/with-react-native-oss-notice/react-native.config.js` (the entry point)
+- `packages/react-native-legal/bare-plugin`
+- `packages/react-native-legal/plugin-utils`
+- `packages/react-native-legal/react-native.config.js` (the entry point)
 
 To test the changes, build the plugin run (from the root directory, the one with consisting all workspaces):
 
 ```sh
-yarn workspace with-react-native-oss-notice build-plugins
+yarn workspace react-native-legal build-plugins
 ```
 
 and then just run the plugin (from the bare RN example app's directory):
 
 ```sh
-yarn react-native with-oss-notice
+yarn react-native legal-generate
 ```
 
 This will generate/modify several files in native `android` & `ios` projects.
@@ -130,9 +130,9 @@ To fix formatting errors, run the following:
 yarn lint:js --fix
 ```
 
-To edit the iOS native part, open `packages/bare-example-notice/ios/BareExampleNotice.xcworkspace` in XCode and find the source files at `Pods > Development Pods > WithReactNativeOSSNotice`.
+To edit the iOS native part, open `packages/bare-example-notice/ios/BareExampleNotice.xcworkspace` in XCode and find the source files at `Pods > Development Pods > ReactNativeLegal`.
 
-To edit the Android native part, open `packages/bare-example-notice/android` in Android studio and find the source files at `with-react-native-oss-notice` under `Android`.
+To edit the Android native part, open `packages/bare-example-notice/android` in Android studio and find the source files at `react-native-legal` under `Android`.
 
 ### Commit message convention
 
