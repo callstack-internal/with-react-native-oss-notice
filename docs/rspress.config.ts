@@ -18,6 +18,9 @@ export default defineConfig({
         content: 'https://github.com/callstackincubator/with-react-native-oss-notice',
       },
     ],
+    footer: {
+      message: `Copyright © ${new Date().getFullYear()} Callstack Open Source`,
+    },
   },
   base: '/with-react-native-oss-notice/',
   plugins: [pluginCallstackTheme()],
