@@ -5,7 +5,7 @@ package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 new_arch_enabled = ENV['RCT_NEW_ARCH_ENABLED'] == '1'
 
 Pod::Spec.new do |s|
-  s.name            = "WithReactNativeOSSNotice"
+  s.name            = "ReactNativeLegal"
   s.version         = package["version"]
   s.summary         = package["description"]
   s.description     = package["description"]
@@ -21,20 +21,20 @@ Pod::Spec.new do |s|
   if new_arch_enabled
     s.pod_target_xcconfig = {
       "DEFINES_MODULE" => "YES",
-      "SWIFT_OBJC_INTERFACE_HEADER_NAME" => "WithReactNativeOSSNotice-Swift.h",
+      "SWIFT_OBJC_INTERFACE_HEADER_NAME" => "ReactNativeLegal-Swift.h",
       # This is handy when we want to detect if new arch is enabled in Swift code
       # and can be used like:
-      # #if WITH_REACT_NATIVE_OSS_NOTICE_NEW_ARCH_ENABLED
+      # #if REACT_NATIVE_LEGAL_NEW_ARCH_ENABLED
       # // do sth when new arch is enabled
       # #else
       # // do sth when old arch is enabled
       # #endif
-      "OTHER_SWIFT_FLAGS" => "-DWITH_REACT_NATIVE_OSS_NOTICE_NEW_ARCH_ENABLED"
+      "OTHER_SWIFT_FLAGS" => "-DREACT_NATIVE_LEGAL_NEW_ARCH_ENABLED"
     }
   else
     s.pod_target_xcconfig = {
       "DEFINES_MODULE" => "YES",
-      "SWIFT_OBJC_INTERFACE_HEADER_NAME" => "WithReactNativeOSSNotice-Swift.h"
+      "SWIFT_OBJC_INTERFACE_HEADER_NAME" => "ReactNativeLegal-Swift.h"
     }
   end
 

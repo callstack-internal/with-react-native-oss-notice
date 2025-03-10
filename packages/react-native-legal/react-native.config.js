@@ -1,12 +1,12 @@
 module.exports = {
   commands: [
     {
-      name: 'with-oss-notice',
+      name: 'legal-generate',
       description: 'Set up all native boilerplate for OSS licenses notice',
       func: ([], { project: { android, ios } }, {}) => {
-        const withOSSNotice = require('./bare-plugin/build').default;
+        const generateLegal = require('./bare-plugin/build').default;
 
-        withOSSNotice(android.sourceDir, ios.sourceDir);
+        generateLegal(android.sourceDir, ios.sourceDir);
       },
     },
   ],

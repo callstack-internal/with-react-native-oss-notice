@@ -1,5 +1,5 @@
 {
-  "name": "with-react-native-oss-notice",
+  "name": "react-native-legal",
   "version": "0.0.1",
   "description": "Acknowledge OSS libraries used in your React Native app",
   "keywords": [
@@ -16,15 +16,15 @@
   "source": "src/index",
   "repository": {
     "type": "git",
-    "url": "https://github.com/callstackincubator/with-react-native-oss-notice.git",
-    "directory": "packages/with-react-native-oss-notice"
+    "url": "https://github.com/callstackincubator/react-native-legal.git",
+    "directory": "packages/react-native-legal"
   },
   "author": "Mateusz Mędrek <luigimario1913@gmail.com> (https://github.com/mateusz1913)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/callstackincubator/with-react-native-oss-notice/issues"
+    "url": "https://github.com/callstackincubator/react-native-legal/issues"
   },
-  "homepage": "https://github.com/callstackincubator/with-react-native-oss-notice#readme",
+  "homepage": "https://github.com/callstackincubator/react-native-legal#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -41,7 +41,7 @@
     "LICENSE",
     "app.plugin.js",
     "react-native.config.js",
-    "WithReactNativeOSSNotice.podspec"
+    "ReactNativeLegal.podspec"
   ],
   "scripts": {
     "build-library": "bob build",
@@ -86,11 +86,11 @@
     ]
   },
   "codegenConfig": {
-    "name": "WithReactNativeOSSNotice",
+    "name": "ReactNativeLegal",
     "type": "all",
     "jsSrcsDir": "./src",
     "android": {
-      "javaPackageName": "com.withreactnativeossnotice"
+      "javaPackageName": "com.reactnativelegal"
     }
   }
 }

@@ -1,4 +1,4 @@
-export const WithReactNativeOSSNotice = {
+export const ReactNativeLegal = {
   launchLicenseListScreen: (_licenseHeaderText?: string) => {
     //
   },
