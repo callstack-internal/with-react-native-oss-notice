@@ -7114,6 +7114,7 @@ __metadata:
     jest: ^29.6.3
     react: 18.3.1
     react-native: 0.76.7
+    react-native-legal: "*"
     react-test-renderer: 18.3.1
   languageName: unknown
   linkType: soft
@@ -10133,6 +10134,7 @@ __metadata:
     expo-status-bar: ~2.0.1
     react: 18.3.1
     react-native: 0.76.7
+    react-native-legal: "*"
   languageName: unknown
   linkType: soft
 
@@ -16793,6 +16795,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-legal@*, react-native-legal@workspace:packages/react-native-legal":
+  version: 0.0.0-use.local
+  resolution: "react-native-legal@workspace:packages/react-native-legal"
+  dependencies:
+    "@types/xml2js": ^0.4.11
+    expo: ~52.0.36
+    expo-module-scripts: ^4.0.0
+    glob: ^7.1.3
+    react: 18.3.1
+    react-native: 0.76.7
+    react-native-builder-bob: 0.23.1
+    xcode: ^3.0.1
+    xml2js: ^0.6.2
+  peerDependencies:
+    expo: ">=52.0.0"
+    react-native: ">=0.76.0"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+  languageName: unknown
+  linkType: soft
+
 "react-native@npm:0.76.7":
   version: 0.76.7
   resolution: "react-native@npm:0.76.7"
@@ -20537,28 +20561,6 @@ __metadata:
   checksum: d5fc37cd561f9daee3c80e03b92ed3e84d80dde3365a8767263d03dacfc8fa06b065ffe1df00d8c2a09f731482fcacae745abfbb478d4af36d0a891fad4834d3
   languageName: node
   linkType: hard
-
-"with-react-native-oss-notice@workspace:packages/with-react-native-oss-notice":
-  version: 0.0.0-use.local
-  resolution: "with-react-native-oss-notice@workspace:packages/with-react-native-oss-notice"
-  dependencies:
-    "@types/xml2js": ^0.4.11
-    expo: ~52.0.36
-    expo-module-scripts: ^4.0.0
-    glob: ^7.1.3
-    react: 18.3.1
-    react-native: 0.76.7
-    react-native-builder-bob: 0.23.1
-    xcode: ^3.0.1
-    xml2js: ^0.6.2
-  peerDependencies:
-    expo: ">=52.0.0"
-    react-native: ">=0.76.0"
-  peerDependenciesMeta:
-    expo:
-      optional: true
-  languageName: unknown
-  linkType: soft
 
 "wonka@npm:^6.3.2":
   version: 6.3.2

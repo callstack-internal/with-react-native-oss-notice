@@ -1,6 +1,6 @@
 import { Platform, Pressable, StatusBar, StyleSheet, Text, View } from 'react-native';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { WithReactNativeOSSNotice } from 'with-react-native-oss-notice';
+import { ReactNativeLegal } from 'react-native-legal';
 
 const BUTTON_BACKGROUND_COLOR = '#8232ff';
 const BUTTON_FONT_COLOR = '#FFF';
@@ -8,7 +8,7 @@ const BUTTON_RIPPLE_COLOR = '#8232ffba';
 
 export default function App() {
   function launchNotice() {
-    WithReactNativeOSSNotice.launchLicenseListScreen('OSS Notice');
+    ReactNativeLegal.launchLicenseListScreen('OSS Notice');
   }
 
   return (
