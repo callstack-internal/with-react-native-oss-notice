@@ -1,13 +1,13 @@
-class WithReactNativeOSSNoticeTableViewController: UITableViewController {
+class ReactNativeLegalTableViewController: UITableViewController {
     private let CELL_IDENTIFIER = "OSSNoticeCell"
     
-    private var data: [WithReactNativeOSSNoticeLicenseMetadata] = [] {
+    private var data: [ReactNativeLegalLicenseMetadata] = [] {
         didSet {
             tableView.reloadData()
         }
     }
     
-    public convenience init(title: String, data: Array<WithReactNativeOSSNoticeLicenseMetadata>) {
+    public convenience init(title: String, data: Array<ReactNativeLegalLicenseMetadata>) {
 #if os(iOS)
         if #available(iOS 13.0, *) {
             self.init(style: .insetGrouped)
@@ -50,7 +50,7 @@ class WithReactNativeOSSNoticeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let metadata = data[indexPath.row]
-        let detailViewController = WithReactNativeOSSNoticeDetailViewController(metadata: metadata)
+        let detailViewController = ReactNativeLegalDetailViewController(metadata: metadata)
 
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }

@@ -1,4 +1,4 @@
-class WithReactNativeOSSNoticeDetailViewController: UIViewController {
+class ReactNativeLegalDetailViewController: UIViewController {
     private var licenseContentTextView: UITextView = {
         let textView = UITextView()
 
@@ -37,9 +37,9 @@ class WithReactNativeOSSNoticeDetailViewController: UIViewController {
         return textView
     }()
 
-    private var metadata: WithReactNativeOSSNoticeLicenseMetadata
+    private var metadata: ReactNativeLegalLicenseMetadata
     
-    init(metadata: WithReactNativeOSSNoticeLicenseMetadata) {
+    init(metadata: ReactNativeLegalLicenseMetadata) {
         self.metadata = metadata
         super.init(nibName: nil, bundle: nil)
         self.title = metadata.name
